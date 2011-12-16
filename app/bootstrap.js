@@ -26,7 +26,7 @@ app.configure('production', function(){
 
 var hostname = "http://socialslide.dev.c9.io/";
 app.configure('production', function() {
-    hostname = "http://floating-earth-4631.herokuapp.com/";
+    hostname = "http://socialslide.herokuapp.com/";
 });
 
 app.get('/', function(req, res){
