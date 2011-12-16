@@ -44,8 +44,8 @@ io.sockets.on('connection', function(socket) {
     socket.on('message', function(msg) {
         console.log(socket.id + "'s send " + msg);
         // クライアントにメッセージを送信する
-        console.log("クライアントにメッセージを送信しました。" + msg);
-        socket.broadcast.emit(msg);
+        console.log("クライアントにメッセージを送信しました。" + msg.page);
+        socket.broadcast.emit("message", msg);
     });
     // クライアントが切断したときの処理
     socket.on('disconnect', function(){
