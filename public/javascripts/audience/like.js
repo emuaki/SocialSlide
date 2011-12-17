@@ -6,6 +6,7 @@ LikeSplash.prototype = {
     
     initialize : function(){
         this.element = $('<div style="position:absolute">いいね!</div>');
+        $(document.body).append(this.element);
     }, 
     
     move : function(){
@@ -28,6 +29,7 @@ LikeSplash.prototype = {
         var self = this;
         setTimeout(function(){
             self.element.fadeOut(1000);
+            self.element.remove();
         }, 1000);
     }
     
