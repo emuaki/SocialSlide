@@ -1,12 +1,15 @@
-var SessionStore = function(){
+var SessionStore = function(option){
     this.sessions = {};
-    this.initialize();
+    this.initialize(option);
 };
 
 SessionStore.prototype = {
+    
+    initialize : function(option){
+        this.id = option.socket.id;
+    },
 
     add : function(key, session){
-        this.id = session.id;
         this.sessions[key] = session;
     }, 
     
@@ -52,10 +55,10 @@ SessionManager.prototype = {
     },
     
     createSessionStore : function(socket){
-        var sessionStore = new SessionStore();
+        var sessionStore = new SessionStore({socket: socket});
         var likeSession = require('sessions/like_session').create({socket: socket});
         sessionStore.add("LikeSession", likeSession);
-        return sesssionStore;
+        return sessionStore;
     },
     
     addSession : function(sessionStore){
