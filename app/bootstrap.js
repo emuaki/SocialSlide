@@ -37,6 +37,8 @@ app.get('/', function(req, res){
   });
 });
 
+var sessionManager = require('session_manager').create(io);
+
 // クライアントが接続してきたときの処理
 io.sockets.on('connection', function(socket) {
     console.log(socket.id + ' connected');
