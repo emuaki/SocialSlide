@@ -33,7 +33,7 @@ SessionManager.prototype = {
         self.io.sockets.on('connection', function (socket) {
 
             self.connectionCount++;
-            // self.addSession(new ClientSession({socket: socket, sessionManager : self}));
+            self.addSession(self.createSessionStore(socket));
             socket.broadcast.emit('connectionCountChange', { 
                 message : 'connected',
                 connectionCount: self.connectionCount
@@ -48,6 +48,13 @@ SessionManager.prototype = {
             });
         });
         
+    },
+    
+    createSessionStore : function(socket){
+        var sessionStore = new SessionStore();
+        var likeSession = require('sessions/like_session').create({socket: socket});
+        sessionStore.add("LikeSession", likeSession);
+        return sesssionStore;
     },
     
     addSession : function(session){

@@ -7,8 +7,10 @@ LikeSession.prototype = {
     initialize : function(args){
         this.socket = args.socket;
         this.id = this.socket.id;
-        this.sessionManager = args.sessionManager;
     }
     
 };
 
+exports.create = function(){
+    return new LikeSession(arguments[0]);   
+};
