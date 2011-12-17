@@ -12,6 +12,7 @@
 <p>ダミーテキスト</p>
 </div>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="/javascripts/audience/like.js"></script>
 <script>
 
   window.socket = io.connect('<%= hostname %>',{
@@ -89,5 +90,11 @@
       CSSslide.move(CSSslide.nowPage - 1);
     }
   }
-  
+
+new LikePanel({
+    socket : socket,
+    likeButtonSelector : "#likeButton",
+    likeSplashSelector : "#likeSplash",
+    likeCountSelector : "#likeCount"
+});
 </script>
