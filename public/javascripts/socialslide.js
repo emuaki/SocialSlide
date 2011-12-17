@@ -31,11 +31,12 @@ var CSSslide={
    CSSslide.slide.push({"innerHTML": CSSslide.restartPage,"s":null,"c":null});
   }
   //スライドを作る
-  document.body.innerHTML="";
+  var slideArea = CSSslide.gID("slideArea");
+  slideArea.innerHTML="";
   var slideElem=document.createElement("div");
   slideElem.id="slide";
   slideElem.innerHTML=CSSslide.slide[0].innerHTML;
-  document.body.appendChild(slideElem);
+  slideArea.appendChild(slideElem);
   //フォントサイズを自動調整
   if(CSSslide.enableFontResize){
    CSSslide.fontSizeRatioDefault=Math.ceil(100+(document.documentElement.offsetWidth*0.14));
