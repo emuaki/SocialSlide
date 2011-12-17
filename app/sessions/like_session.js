@@ -15,7 +15,8 @@ LikeSession.prototype = {
         var self = this;
         this.socket.on("likeSession-like", function(){
             self.likeService.countUp();
-            
+            var count = self.likeService.getCount();
+            self.socket.broadcast.emit('likeSession-likeCountUp', {count : count});
         });
     }
     
