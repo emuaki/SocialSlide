@@ -1,6 +1,6 @@
 var LikeSplash  = function(){
     this.initialize();
-}
+};
 
 LikeSplash.prototype = {
     
@@ -23,7 +23,7 @@ LikeSplash.prototype = {
     },
     
     show : function(){
-        
+        this.move();
         this.element.fadeIn(500);
         var self = this;
         setTimeout(function(){
@@ -42,8 +42,6 @@ LikePanel.prototype = {
     initialize : function(args){
         this.socket = args.socket;
         this.likeButton = $(args.likeButtonSelector);
-        this.likeSplash = $(args.likeSplashSelector);
-        this.likeSplash.hide();
         this.likeCount = $(args.likeCountSelector);   
         this.setupListener();
     },
@@ -61,19 +59,7 @@ LikePanel.prototype = {
     
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
-        this.showLike();
-    },
-    
-    showLike : function(){
-        var self = this;
-        this.likeSplash.show();
-        setTimeout(function(){
-            self.hideLike();    
-        }, 5000);
-    },
-    
-    hideLike : function(){
-        this.likeSplash.hide();
+        new LikeSplash().show();
     }
 
 };
