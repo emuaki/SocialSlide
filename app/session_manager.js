@@ -6,6 +6,7 @@ var SessionStore = function(){
 SessionStore.prototype = {
 
     add : function(key, session){
+        this.id = session.id;
         this.sessions[key] = session;
     }, 
     
@@ -57,8 +58,8 @@ SessionManager.prototype = {
         return sesssionStore;
     },
     
-    addSession : function(session){
-        this.sessions[session.id] = session;
+    addSession : function(sessionStore){
+        this.sessions[sessionStore.id] = sessionStore;
     },
     
     removeSession : function(id){
