@@ -1,8 +1,23 @@
+
 var LikeCounter = function(args){
   
 };
 
 LikeCounter.prototype = {
+    
+    current : 0,
+    
+    countUp : function(){
+        this.current++;
+    },
+    
+    getCount : function(){
+        return current;   
+    },
+    
+    clear : function(){
+        this.current = 0;
+    }
     
 };
 
@@ -13,6 +28,15 @@ var LikeService = function(args){
 LikeService.prototype = {
     
     initialize : function(args){
+        this.counter = new LikeCounter();
+    },
+    
+    countUp : function(){
+        this.counter.countUp();   
+    },
+    
+    getCount : function(){
+        return this.counter.getCount();   
     }
     
 };

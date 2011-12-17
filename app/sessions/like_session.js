@@ -7,6 +7,16 @@ LikeSession.prototype = {
     initialize : function(args){
         this.socket = args.socket;
         this.id = this.socket.id;
+        this.setupListener();
+        this.likeService = require('services/like_service').getLikeService();
+    },
+    
+    setupListener : function(){
+        var self = this;
+        this.socket.on("likeSession-like", function(){
+            self.likeService.countUp();
+            
+        });
     }
     
 };
