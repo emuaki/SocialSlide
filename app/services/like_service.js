@@ -12,7 +12,7 @@ LikeCounter.prototype = {
     },
     
     getCount : function(){
-        return current;   
+        return this.current;   
     },
     
     clear : function(){

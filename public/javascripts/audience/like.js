@@ -20,7 +20,6 @@ LikePanel.prototype = {
            return false;
         });
         this.socket.on("likeSession-likeCountUp", function(data){
-            alert("likeCountup");
             self.onLikeCountUp(data);
         });
     },
