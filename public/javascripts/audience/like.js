@@ -18,8 +18,10 @@ LikeSplash.prototype = {
     },
     
     calcRandomPoint : function(){
-        var x = Math.floor(Math.random()*800);
-        var y = Math.floor(Math.random()*600);
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+        var x = Math.floor(Math.random() * windowWidth);
+        var y = Math.floor(Math.random() * windowHeight);
         return {x : x, y : y};
     },
     
