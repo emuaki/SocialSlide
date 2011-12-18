@@ -39,19 +39,3 @@ app.get('/', function(req, res){
 
 var sessionManager = require('session_manager').create({io:io});
 sessionManager.start();
-
-// クライアントが接続してきたときの処理
-io.sockets.on('connection', function(socket) {
-    console.log(socket.id + ' connected');
-    // メッセージを受けたときの処理
-    socket.on('message', function(msg) {
-        console.log(socket.id + "'s send " + msg);
-        // クライアントにメッセージを送信する
-        console.log("クライアントにメッセージを送信しました。" + msg.page);
-        socket.broadcast.emit("message", msg);
-    });
-    // クライアントが切断したときの処理
-    socket.on('disconnect', function(){
-        console.log(socket.sessionId + ' disconnected');
-    });
-});

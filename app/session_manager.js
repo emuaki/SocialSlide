@@ -57,7 +57,9 @@ SessionManager.prototype = {
     createSessionStore : function(socket){
         var sessionStore = new SessionStore({socket: socket});
         var likeSession = require('sessions/like_session').create({socket: socket});
+        var slideSession = require('sessions/slide_session').create({socket: socket});
         sessionStore.add("LikeSession", likeSession);
+        sessionStore.add("SlideSession", slideSession);
         return sessionStore;
     },
     
