@@ -167,6 +167,17 @@ $(function() {
     });
 	$.deck('.slide');
 
+    var isSlideChanging = false;
+    $(document).bind('deck.change', function(event, from, to) {
+        socket.emit("SlideSession-pageChange", {page : to} );
+        isSlideChanging = true;
+    });
+
+    socket.on("SlideSession-pageChange", function(data){
+        if(isSlideChanging) return;
+        $.deck('go', data.page);
+        isSlideChanging = false;
+    });
 
     new LikePanel({
         socket : socket,
