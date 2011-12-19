@@ -15,7 +15,7 @@ SlideControl.prototype = {
     
     setupDeck : function(){
         $.deck('.slide');
-        if(! admin){
+        if(! this.admin){
             $.deck('extend', 'next', function(){});
             $.deck('extend', 'prev', function(){});
         }               
@@ -34,7 +34,7 @@ SlideControl.prototype = {
     myPageChange : function(from ,to){
         if(this.isReady) {
             console.log("from:" + from  + ", to:" + to);
-            socket.emit("SlideSession-pageChange", {page : to} );
+            this.socket.emit("SlideSession-pageChange", {page : to} );
         }
         this.isReady = true;
     },
