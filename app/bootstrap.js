@@ -29,9 +29,14 @@ app.configure('production', function() {
 
 // Routes
 app.get('/', function(req, res){
-  res.render('index.ejs', {
-    hostname : hostname
-  });
+    var admin = false;
+    if(req.query.admin == "true"){
+        admin = true;
+    }
+    res.render('index.ejs', {
+        hostname : hostname,
+        admin : admin
+    });
 });
 
 var sessionManager = require('session_manager').create({io:io});

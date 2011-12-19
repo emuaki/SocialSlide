@@ -135,7 +135,7 @@
 <script src="/javascripts/deck.js/deck.scale.js"></script>
 <script src="/javascripts/deck.js/deck.status.js"></script>
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-<script src="/javascripts/audience/like.js"></script>
+<script src="/javascripts/like.js"></script>
 
 <script type="text/javascript">
 $(function() {
@@ -143,6 +143,11 @@ $(function() {
        'connect timeout' : 2000
     });
 	$.deck('.slide');
+
+    if(! <%= admin %>){
+        $.deck('extend', 'next', function(){});
+        $.deck('extend', 'prev', function(){});
+    }
 
     var isReady = true;
     $(document).bind('deck.change', function(event, from, to) {
