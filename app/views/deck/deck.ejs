@@ -11,7 +11,8 @@
 	
 	<!-- Core and extension CSS files -->
 	<link rel="stylesheet" href="/stylesheets/deck.js/deck.core.css">
-	<link rel="stylesheet" href="/stylesheets/deck.js/status.css">
+    <link rel="stylesheet" href="/stylesheets/deck.js/deck.scale.css">
+	<link rel="stylesheet" href="/stylesheets/deck.js/deck.status.css">
 	<link rel="stylesheet" id="style-theme-link" href="/stylesheets/deck.js/web-2.0.css">
 	<link rel="stylesheet" id="transition-theme-link" href="/stylesheets/deck.js/horizontal-slide.css">
 
@@ -161,11 +162,13 @@
 <script src="/javascripts/jquery-1.7.min.js"></script>
 <script src="/javascripts/deck.js/deck.core.js"></script>
 <script src="/javascripts/deck.js/deck.scale.js"></script>
-<script src="/javascripts/deck.js/deck.menu.js"></script>
 <script src="/javascripts/deck.js/deck.status.js"></script>
 
 <script type="text/javascript">
-
+$(function() {
+    // Deck initialization
+	$.deck('.slide');
+});
 </script>
 
 </body>

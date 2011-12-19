@@ -22,13 +22,12 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
-
 var hostname = "http://socialslide.dev.c9.io/";
 app.configure('production', function() {
     hostname = "http://socialslide.herokuapp.com/";
 });
 
+// Routes
 app.get('/', function(req, res){
   res.render('index', {
     title: 'Social Slide',
@@ -38,7 +37,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/deck', function(req, res){
-  res.render('deck', {
+  res.render('deck/deck.ejs', {
     hostname : hostname
   });
 });
