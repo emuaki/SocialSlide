@@ -167,16 +167,17 @@ $(function() {
     });
 	$.deck('.slide');
 
-    var isSlideChanging = false;
+    var isReady = true;
     $(document).bind('deck.change', function(event, from, to) {
+//        if(!isReady) return;
+        console.log("from:" + from  + ", to:" + to);
         socket.emit("SlideSession-pageChange", {page : to} );
-        isSlideChanging = true;
+        isReady = false;
     });
 
     socket.on("SlideSession-pageChange", function(data){
-        if(isSlideChanging) return;
         $.deck('go', data.page);
-        isSlideChanging = false;
+        isReady = true;
     });
 
     new LikePanel({
