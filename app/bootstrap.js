@@ -37,5 +37,11 @@ app.get('/', function(req, res){
   });
 });
 
+app.get('/deck', function(req, res){
+  res.render('deck', {
+    hostname : hostname
+  });
+});
+
 var sessionManager = require('session_manager').create({io:io});
 sessionManager.start();
