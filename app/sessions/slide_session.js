@@ -13,9 +13,9 @@ SlideSession.prototype = {
     
     setupListener : function(){
         var self = this;
-        this.socket.on('message', function(msg){
-            console.log("slide page change. page:" + msg.page);
-            self.socket.broadcast.emit("message", msg);
+        this.socket.on('SlideSession-pageChange', function(data){
+            console.log("slide page change. page:" + data.page);
+            self.socket.broadcast.emit("SlideSession-pageChange", data);
         });
     }
 };
