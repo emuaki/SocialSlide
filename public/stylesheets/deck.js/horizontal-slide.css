@@ -10,7 +10,7 @@
 }
 .csstransitions.csstransforms .deck-container:not(.deck-menu) > .slide {
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

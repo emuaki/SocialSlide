@@ -42,11 +42,13 @@ var LikePanel = function(args){
 };
 
 LikePanel.prototype = {
+
+    initialReceive : false,
     
     initialize : function(args){
         this.socket = args.socket;
-        this.likeButton = $(args.likeButtonSelector);
-        this.likeCount = $(args.likeCountSelector);   
+        this.likeButton = $(args.selector.button);
+        this.likeCount = $(args.selector.counter);   
         this.setupListener();
     },
     
@@ -58,11 +60,13 @@ LikePanel.prototype = {
         });
         this.socket.on("likeSession-likeCountUp", function(data){
             self.onLikeCountUp(data);
+            self.initialReceive = true;
         });
     },
     
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
+        if(! this.initialReceive) return;
         new LikeSplash().show();
     }
 

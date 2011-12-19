@@ -21,9 +21,9 @@
 
 <body class="deck-container">
 
-<div class="likePanel">
+<div class="likePanel" style="margin: 10px;">
     <a href="#" id="likeButton">いいね!</a>
-    <span id="likeCount"></span>
+    <span id="likeCounter"></span>
 </div>
 
 <section class="slide" id="title-slide">
@@ -142,15 +142,6 @@
 </section>
 
 
-<section class="slide" id="elements-videos">
-	<h2>Other Elements: Video Embeds</h2>
-	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
-	
-	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
-	
-	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
-</section>
-
 <section class="slide" id="digging-deeper">
 	<h2>Digging Deeper</h2>
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
@@ -166,11 +157,23 @@
 <script src="/javascripts/deck.js/deck.core.js"></script>
 <script src="/javascripts/deck.js/deck.scale.js"></script>
 <script src="/javascripts/deck.js/deck.status.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/audience/like.js"></script>
 
 <script type="text/javascript">
 $(function() {
-    // Deck initialization
+    var socket = io.connect('<%= hostname %>',{
+       'connect timeout' : 2000
+    });
 	$.deck('.slide');
+    new LikePanel({
+        socket : socket,
+        selector : {
+            button : "#likeButton",
+            counter : "#likeCounter"
+        }
+    });
+
 });
 </script>
 
