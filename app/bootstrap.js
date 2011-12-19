@@ -29,15 +29,7 @@ app.configure('production', function() {
 
 // Routes
 app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Social Slide',
-    desc: 'このページはSocial Slideのサンプルページです。',
-    hostname : hostname
-  });
-});
-
-app.get('/deck', function(req, res){
-  res.render('deck/deck.ejs', {
+  res.render('index.ejs', {
     hostname : hostname
   });
 });
