@@ -142,25 +142,10 @@ $(function() {
     var socket = io.connect('<%= hostname %>',{
        'connect timeout' : 2000
     });
-	$.deck('.slide');
 
-    if(! <%= admin %>){
-        $.deck('extend', 'next', function(){});
-        $.deck('extend', 'prev', function(){});
-    }
-
-    var isReady = true;
-    $(document).bind('deck.change', function(event, from, to) {
-        if(isReady) {
-            console.log("from:" + from  + ", to:" + to);
-            socket.emit("SlideSession-pageChange", {page : to} );
-        }
-        isReady = true;
-    });
-
-    socket.on("SlideSession-pageChange", function(data){
-        isReady = false;
-        $.deck('go', data.page);
+    new SlideControl({
+        socket : socket,
+        admin : <%= admin %>
     });
 
     new LikePanel({
