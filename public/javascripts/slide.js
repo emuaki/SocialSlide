@@ -9,8 +9,8 @@ SlideControl.prototype = {
     initialize : function(args){
         this.admin = args.admin;
         this.socket = args.socket;
+        this.setupDeck();        
         this.setupListener();
-        this.setupDeck();
     },
     
     setupDeck : function(){

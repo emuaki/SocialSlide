@@ -4,13 +4,15 @@ var SlideSession = function(args){
 
 SlideSession.prototype = {
     
+    pageChangeKey  : "SlideSession-pageChange",
+    
     initialize : function(args){
         this.socket = args.socket;
         this.id = this.socket.id;
         this.setupListener();
         this.service = require('services/slide_service').getSlideService();
-        this.socket.emit(this.service.pageNo);
-        console.log("SlideSession created." + this.id);
+        this.socket.emit(this.pageChangeKey, {page : this.service.pageNo});
+        console.log("SlideSession created." + this.id + ", pageNo:" + this.service.pageNo);
     },
     
     setupListener : function(){
@@ -18,7 +20,7 @@ SlideSession.prototype = {
         this.socket.on('SlideSession-pageChange', function(data){
             console.log("slide page change. page:" + data.page);
             self.service.change(data.page);
-            self.socket.broadcast.emit("SlideSession-pageChange", data);
+            self.socket.broadcast.emit(self.pageChangeKey, data);
         });
     }
 };
