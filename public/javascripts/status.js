@@ -9,6 +9,7 @@ ConnectionStatus.prototype = {
         this.status = $(args.selector.status);
         this.count = $(args.selector.count);
         this.transport = $(args.selector.transport);
+        this.start();
     },
     
     start : function(){        
