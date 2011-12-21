@@ -28,7 +28,7 @@ ChatSession.prototype = {
         if(validateResult){
             this.service.put(chatMessage);
             this.socket.emit(this.newMessageKey, [chatMessage]);
-            this.socket.broadcast.emit(this.newMessageKey, [chatMessage]);
+            this.socket.broadcast.emit(this.newMessageKey, {chatMessages : [chatMessage]});
         }else{
             console.log("chat message is not validate" + data);
             // send error message
