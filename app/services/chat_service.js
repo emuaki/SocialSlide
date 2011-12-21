@@ -4,7 +4,7 @@ var ChatMessage = function(args){
 
 ChatMessage.prototype = {
     
-    maxSize : 256,
+    maxLength : 256,
     
     timestamp : null,
     
@@ -20,7 +20,7 @@ ChatMessage.prototype = {
     
     validate : function(){
         if(this.message == "") return false;
-        if(this.message.length > this.maxSize) return false;
+        if(this.message.length > this.maxLength) return false;
         if(this.name > this.maxSize) return false;
         
         return true;

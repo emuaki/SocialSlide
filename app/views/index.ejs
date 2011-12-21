@@ -107,6 +107,14 @@
 	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
 </section>
 
+<div class="chatArea">
+    name: <input type="text" id="chatPanelName" />
+    message: <input type="text" id="chatPanelMessage" />
+    <input type="button" name="send" id="chatPanelSendButton" />
+    <div>
+        <ul id="chatPanelContainer"></ul>
+    </div>
+</div>
 
 <div class="connectionStatusArea">
     接続ステータス:<span id="connectionStatus">--</span>, 
@@ -139,6 +147,14 @@ $(function() {
     });
 
     new LikePanel({
+        socket : socket,
+        selector : {
+            button : "#likeButton",
+            counter : "#likeCounter"
+        }
+    });
+
+    new ChatPanel({
         socket : socket,
         selector : {
             button : "#likeButton",
