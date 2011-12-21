@@ -7,7 +7,15 @@ ChatMessage.prototype = {
     
     name : "",
     
-    message : ""
+    message : "",
+    
+    initialize : function(args){
+        this.validate();
+    },
+    
+    validate : function(){
+        
+    }
 };
 
 var ChatContainer = function(){    
@@ -24,7 +32,7 @@ ChatContainer.prototype = {
     },
     
     adjust : function(currencyPair){
-        var currentSize = this.queue[currencyPair].length;
+        var currentSize = this.queue.length;
         if(currentSize > this.maxQueueSize){
             this.queue[currencyPair].shift();
         }
@@ -60,4 +68,8 @@ ChatService.prototype = {
 var chatService = new ChatService();
 exports.getService = function(){
     return chatService;   
+};
+
+exports.createChatMessage = function(args){
+    return new ChatMessage(args);  
 };

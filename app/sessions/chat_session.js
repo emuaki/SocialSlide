@@ -11,16 +11,30 @@ ChatSession.prototype = {
         this.id = this.socket.id;
         this.setupListener();
         this.service = require('services/chat_service').getService();
-        this.socket.emit(this.newMessageKey, {page : this.service.pageNo});
+        this.socket.emit(this.newMessageKey, {chatMessages : this.service.findAll()});
         console.log("ChatSession created." + this.id);
     },
     
     setupListener : function(){
         var self = this;
-        this.socket.on(this.newMessageKey, function(data){    
-            self.service.add(data.message);
-            self.socket.broadcast.emit(self.newMessageKey, data);
+        this.socket.on(this.newMessageKey, function(data){
+            self.onReceive(data);
         });
+    },
+    
+    onReceive : function(data){
+        var chatMessage = this.convert();
+        var validateResult = chatMessage.validate();
+        if(validateResult){
+            this.service.put(data.message);
+            this.socket.broadcast.emit(this.newMessageKey, data);
+        }else{
+            // send error message
+        }
+    },
+    
+    convert : function(data){
+        return this.service.createChatMessage(data);
     }
 };
 
