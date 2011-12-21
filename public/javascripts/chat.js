@@ -30,7 +30,9 @@ ChatPanel.prototype = {
     },
     
     onReceive : function(data){
-        this.addMessage(data);
+        for(var i in data){
+            this.addMessage(data[i]);
+        } 
     },
     
     addMessage : function(data){
@@ -44,7 +46,10 @@ ChatPanel.prototype = {
     },
     
     adjust : function(){
-        
+        var listSize = this.container.find("*").size();
+        if(listSize > this.maxMessageSize){
+            this.container.find(":last").remove();   
+        }
     }
 
 };
