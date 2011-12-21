@@ -31,13 +31,15 @@ ChatPanel.prototype = {
     
     onReceive : function(data){
         console.log(data);
-        for(var i in data){
-            this.addMessage(data[i]);
+        var messages = data.chatMessage;
+        if(messages === undefined) return;
+        for(var i in messages){
+            this.addMessage(messages[i]);
         } 
     },
     
-    addMessage : function(data){
-        var list = this.createListElement(data);
+    addMessage : function(chatMessage){
+        var list = this.createListElement(chatMessage);
         this.container.prepend(list);
         this.adjust();
     },
