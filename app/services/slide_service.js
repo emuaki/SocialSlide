@@ -18,6 +18,6 @@ SlideService.prototype = {
 };
 
 var slideService = new SlideService();
-exports.getSlideService = function(){
+exports.getService = function(){
     return slideService;   
 };

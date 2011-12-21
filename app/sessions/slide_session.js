@@ -10,7 +10,7 @@ SlideSession.prototype = {
         this.socket = args.socket;
         this.id = this.socket.id;
         this.setupListener();
-        this.service = require('services/slide_service').getSlideService();
+        this.service = require('services/slide_service').getService();
         this.socket.emit(this.pageChangeKey, {page : this.service.pageNo});
         console.log("SlideSession created." + this.id + ", pageNo:" + this.service.pageNo);
     },

@@ -9,7 +9,7 @@ StatusSession.prototype = {
     initialize : function(args){
         this.socket = args.socket;
         this.id = this.socket.id;
-        this.service = require('services/status_service').getStatusService();
+        this.service = require('services/status_service').getService();
         this.service.plusConnectionCount();
         this.setupListener();        
         this.socket.emit(this.statusChangeKey, {

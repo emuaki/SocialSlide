@@ -8,7 +8,7 @@ LikeSession.prototype = {
         this.socket = args.socket;
         this.id = this.socket.id;
         this.setupListener();
-        this.likeService = require('services/like_service').getLikeService();
+        this.likeService = require('services/like_service').getService();
         this.sendCurrentCount();
     },
     

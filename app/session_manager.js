@@ -43,13 +43,10 @@ SessionManager.prototype = {
     
     createSessionStore : function(socket){
         var sessionStore = new SessionStore({socket: socket});
-        var likeSession = require('sessions/like_session').create({socket: socket});
-        var slideSession = require('sessions/slide_session').create({socket: socket});
-        var statusSession = require('sessions/status_session').create({socket: socket});
-
-        sessionStore.add("LikeSession", likeSession);
-        sessionStore.add("SlideSession", slideSession);
-        sessionStore.add("StatusSession", statusSession);        
+        sessionStore.add("LikeSession", require('sessions/like_session').create({socket: socket}));
+        sessionStore.add("SlideSession", require('sessions/slide_session').create({socket: socket}));
+        sessionStore.add("StatusSession", require('sessions/status_session').create({socket: socket}));
+        sessionStore.add("ChatSession", require('sessions/chat_session').create({socket: socket}));       
         return sessionStore;
     },
     

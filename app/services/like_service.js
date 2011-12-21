@@ -42,6 +42,6 @@ LikeService.prototype = {
 };
 
 var likeService = new LikeService();
-exports.getLikeService = function(){
+exports.getService = function(){
     return likeService;   
 };

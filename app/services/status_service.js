@@ -22,6 +22,6 @@ StatusService.prototype = {
 };
 
 var statusService = new StatusService();
-exports.getStatusService = function(){
+exports.getService = function(){
     return statusService;   
 };
