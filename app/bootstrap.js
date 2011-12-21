@@ -18,16 +18,12 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
+var hostname = "http://socialslide.dev.c9.io/";
 app.configure('production', function(){
   app.use(express.errorHandler()); 
+  hostname = "http://socialslide.herokuapp.com/";
 });
 
-var hostname = "http://socialslide.dev.c9.io/";
-app.configure('production', function() {
-    hostname = "http://socialslide.herokuapp.com/";
-});
-
-// Routes
 app.get('/', function(req, res){
     var admin = false;
     if(req.query.admin == "true"){
