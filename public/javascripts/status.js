@@ -38,10 +38,9 @@ ConnectionStatus.prototype = {
             self.status.html('disconnect');
         });
                 
-        this.socket.on('connectionCountChange', function (data) {
+        this.socket.on('StatusSession-statusChange', function (data) {
             self.count.html(data.connectionCount);
         });
-
     }
     
 };

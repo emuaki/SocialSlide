@@ -9,13 +9,16 @@ StatusSession.prototype = {
     initialize : function(args){
         this.socket = args.socket;
         this.id = this.socket.id;
-        this.setupListener();
         this.service = require('services/status_service').getStatusService();
         this.service.plusConnectionCount();
+        this.setupListener();        
         this.socket.emit(this.pageChangeKey, {
             connectionCount: this.service.connectionCount,
             transport : this.socket.transport
         });
+        this.socket.broadcast.emit(this.statusChangeKey, { 
+            connectionCount: this.service.connectionCount
+        });        
         console.log("StatusSession created." + this.id + ", connectionCount:" + this.service.connectionCount);
     },
     

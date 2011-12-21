@@ -29,29 +29,16 @@ SessionManager.prototype = {
     
     initialize : function(option){
         this.io = option.io;
-        this.connectionCount = 0;
     },
     
     start : function(){
         var self = this;
         self.io.sockets.on('connection', function (socket) {
-
-            self.connectionCount++;
             self.addSession(self.createSessionStore(socket));
-            socket.broadcast.emit('connectionCountChange', { 
-                message : 'connected',
-                connectionCount: self.connectionCount
-            });
-            
             socket.on('disconnect', function(){
                 self.removeSession(socket.id);
-                socket.broadcast.emit('connectionCountChange', { 
-                    message : 'disconnected',
-                    connectionCount: self.connectionCount
-                });
             });
-        });
-        
+        }); 
     },
     
     createSessionStore : function(socket){
