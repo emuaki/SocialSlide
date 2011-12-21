@@ -39,6 +39,7 @@ ConnectionStatus.prototype = {
         });
                 
         this.socket.on('StatusSession-statusChange', function (data) {
+            self.count.html(data.transport);            
             self.count.html(data.connectionCount);
         });
     }
