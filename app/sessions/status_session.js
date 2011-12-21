@@ -13,8 +13,7 @@ StatusSession.prototype = {
         this.service.plusConnectionCount();
         this.setupListener();        
         this.socket.emit(this.statusChangeKey, {
-            connectionCount: this.service.connectionCount,
-            transport : this.socket.transport
+            connectionCount: this.service.connectionCount
         });
         this.socket.broadcast.emit(this.statusChangeKey, { 
             connectionCount: this.service.connectionCount
