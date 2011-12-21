@@ -31,7 +31,7 @@ ChatPanel.prototype = {
     
     onReceive : function(data){
         console.log(data);
-        var messages = data.chatMessage;
+        var messages = data.chatMessages;
         if(messages === undefined) return;
         for(var i in messages){
             this.addMessage(messages[i]);
