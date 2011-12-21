@@ -30,6 +30,7 @@ ChatPanel.prototype = {
     },
     
     onReceive : function(data){
+        console.log(data);
         for(var i in data){
             this.addMessage(data[i]);
         } 
