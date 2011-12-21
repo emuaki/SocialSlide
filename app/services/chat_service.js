@@ -11,20 +11,16 @@ ChatMessage.prototype = {
 };
 
 var ChatContainer = function(){    
-  
+    this.queue = [];
 };
 
 ChatContainer.prototype = {
     
-    maxQueueSize : 30,
+    maxQueueSize : 5,
     
-    put : function(bar){
-        var currencyPair = bar.currencyPair;
-        if(this.queue[currencyPair] === undefined){
-            this.queue[currencyPair] = [];
-        }
-        this.queue[currencyPair].push(bar);
-        this.adjust(currencyPair);
+    put : function(chatMessage){
+        this.queue.push(chatMessage);
+        this.adjust();
     },
     
     adjust : function(currencyPair){
@@ -32,20 +28,6 @@ ChatContainer.prototype = {
         if(currentSize > this.maxQueueSize){
             this.queue[currencyPair].shift();
         }
-    },
-    
-    find : function(currencyPair, size){
-        var queue = this.queue[currencyPair];
-        if(undefined === queue) return [];
-        var i = queue.length - size;
-        if(i < 0){
-            i = 0;
-        }
-        var result = [];
-        for(; i < queue.length; i++){
-            result.push(queue[i]);
-        }
-        return result;
     },
     
     findAll : function(){
@@ -56,18 +38,21 @@ ChatContainer.prototype = {
 
 
 var ChatService = function(args){
-    this.queue = {};
-    this.initialize(args);
+     this.initialize(args);
 };
 
 ChatService.prototype = {
     
     initialize : function(args){
-        
+        this.container = new ChatContainer();
     },
     
-    change : function(pageNo){
-        this.pageNo = pageNo;
+    put : function(chatMessage){
+        this.container.put(chatMessage);
+    },
+    
+    findAll : function(){
+        return this.container.findAll();
     }
     
 };
