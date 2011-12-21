@@ -12,7 +12,7 @@ StatusSession.prototype = {
         this.service = require('services/status_service').getStatusService();
         this.service.plusConnectionCount();
         this.setupListener();        
-        this.socket.emit(this.pageChangeKey, {
+        this.socket.emit(this.statusChangeKey, {
             connectionCount: this.service.connectionCount,
             transport : this.socket.transport
         });
