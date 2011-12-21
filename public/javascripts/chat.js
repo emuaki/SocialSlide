@@ -37,7 +37,7 @@ ChatPanel.prototype = {
     
     addMessage : function(data){
         var list = this.createListElement(data);
-        this.container.preppend(list);
+        this.container.prepend(list);
         this.adjust();
     },
     
