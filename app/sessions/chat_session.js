@@ -26,8 +26,8 @@ ChatSession.prototype = {
         var chatMessage = this.convert();
         var validateResult = chatMessage.validate();
         if(validateResult){
-            this.service.put(data.message);
-            this.socket.broadcast.emit(this.newMessageKey, data);
+            this.service.put(chatMessage);
+            this.socket.broadcast.emit(this.newMessageKey, [chatMessage]);
         }else{
             // send error message
         }

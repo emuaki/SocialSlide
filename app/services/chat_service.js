@@ -3,6 +3,9 @@ var ChatMessage = function(args){
 };
 
 ChatMessage.prototype = {
+    
+    maxSize : 256,
+    
     timestamp : null,
     
     name : "",
@@ -10,11 +13,17 @@ ChatMessage.prototype = {
     message : "",
     
     initialize : function(args){
-        this.validate();
+        this.timestamp = new Date();
+        this.name = args.name || "nanashi";
+        this.message = args.message;
     },
     
     validate : function(){
+        if(this.message == "") return false;
+        if(this.message.length > this.maxSize) return false;
+        if(this.name > this.maxSize) return false;
         
+        return true;
     }
 };
 
