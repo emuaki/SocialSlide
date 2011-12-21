@@ -110,14 +110,20 @@
 	</p>
 </div>
 
-<div class="likePanel" style="margin: 10px;">
-	<a href="#" id="likeButton">いいね!</a>
-	<span id="likeCounter"></span>
+<div class="likePanel">
+    <div class="likeButtonContainer">
+        <img id="likeButton" class="likeButton" src="/images/like_button.png" width="250" height="120" />
+    </div>
+	<div class="likeCounter" id="likeCounter">--</div>
 </div>
-
-<div class="chatArea">
-    name: <input type="text" id="chatPanelName" />
-    message: <input type="text" id="chatPanelMessage" />
+<br style="clear:both" />
+<div class="chatPanel">
+    <span>
+        name: <input type="text" id="chatPanelName" size="16" />
+    </span>
+    <span style="margin-left: 10px">
+        message: <input type="text" id="chatPanelMessage" size="64" maxlength="64" />
+    </span>
     <input type="button" value="send" id="chatPanelSendButton" />
     <div>
         <ul id="chatPanelContainer"></ul>
