@@ -19,7 +19,7 @@ ChatMessage.prototype = {
     },
     
     validate : function(){
-        if(this.message == "") return false;
+        if(this.message === undefined || this.message == "") return false;
         if(this.message.length > this.maxLength) return false;
         if(this.name > this.maxSize) return false;
         
@@ -40,10 +40,10 @@ ChatContainer.prototype = {
         this.adjust();
     },
     
-    adjust : function(currencyPair){
+    adjust : function(){
         var currentSize = this.queue.length;
         if(currentSize > this.maxQueueSize){
-            this.queue[currencyPair].shift();
+            this.queue.shift();
         }
     },
     

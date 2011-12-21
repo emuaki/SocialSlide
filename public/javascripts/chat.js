@@ -42,7 +42,7 @@ ChatPanel.prototype = {
     },
     
     createListElement : function(data){
-        return "<li>" +   data.message + "</li>";
+        return "<li>" + data.name + ":" + data.message + "</li>";
     },
     
     adjust : function(){

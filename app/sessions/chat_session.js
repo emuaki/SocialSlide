@@ -23,18 +23,21 @@ ChatSession.prototype = {
     },
     
     onReceive : function(data){
-        var chatMessage = this.convert();
+        var chatMessage = this.convert(data);
         var validateResult = chatMessage.validate();
         if(validateResult){
             this.service.put(chatMessage);
+            this.socket.emit(this.newMessageKey, [chatMessage]);
             this.socket.broadcast.emit(this.newMessageKey, [chatMessage]);
         }else{
+            console.log("chat message is not validate" + data);
             // send error message
         }
     },
     
     convert : function(data){
-        return this.service.createChatMessage(data);
+        console.log(data);
+        return require('services/chat_service').createChatMessage(data);
     }
 };
 
