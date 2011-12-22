@@ -45,7 +45,19 @@ ChatPanel.prototype = {
     },
     
     createListElement : function(data){
-        return "<li>" + data.name + ":" + data.message + "</li>";
+        return  [
+            '<li class="chatMessageLine">',
+            '<span class="chatMessageTimestamp">',
+            data.timestamp,
+            "</span>",
+            '<span class="chatMessageName">',
+            data.name,
+            "</span>",
+            '<span class="chatMessage">',
+            data.message,
+            "</span>",
+            "</li>"
+        ].join("");
     },
     
     adjust : function(){
