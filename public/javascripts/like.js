@@ -55,8 +55,8 @@ LikePanel.prototype = {
     setupListener : function(){
         var self = this;
         this.likeButton.click(function(){
-           self.socket.emit("likeSession-like", {});
-           return false;
+            self.clickLikeButton();
+            return false;
         });
         this.socket.on("likeSession-likeCountUp", function(data){
             self.onLikeCountUp(data);
@@ -64,9 +64,19 @@ LikePanel.prototype = {
         });
     },
     
+    clickLikeButton : function(){
+        var self = this;
+        this.likeButton.css({ "opacity": "0.5"});
+        setTimeout(function(){
+           self.likeButton.css({"opacity": "1.0"}); 
+        }, 5000);
+        this.socket.emit("likeSession-like", {});
+    },
+    
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
         if(! this.initialReceive) return;
+        this.likeButton.css({"opacity": "1.0"});
         new LikeSplash().show();
     }
 
