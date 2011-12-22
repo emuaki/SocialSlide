@@ -5,7 +5,7 @@ var LikeSplash  = function(){
 LikeSplash.prototype = {
     
     initialize : function(){
-        this.element = $('<div style="position:absolute">いいね!</div>');
+        this.element = $('<div class="likeSplash" style="position:absolute">いいね!</div>');
         $(document.body).append(this.element);
     }, 
     
