@@ -5,7 +5,7 @@ var LikeSplash  = function(){
 LikeSplash.prototype = {
     
     initialize : function(){
-        this.element = $('<div class="likeSplash" style="position:absolute">いいね!</div>');
+        this.element = $('<div class="likeSplash">いいね!</div>');
         $(document.body).append(this.element);
     }, 
     
@@ -26,13 +26,16 @@ LikeSplash.prototype = {
     },
     
     show : function(){
-        this.move();
-        this.element.fadeIn(500);
         var self = this;
-        setTimeout(function(){
+        this.move();
+        this.element.fadeIn();
+        this.element.animate({
+            fontSize: "100px",
+            opacity: 0.1
+        }, 1000, function(){
             self.element.fadeOut(1000);
             self.element.remove();
-        }, 1000);
+        });
     }
     
 };
