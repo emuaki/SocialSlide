@@ -53,7 +53,7 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
     position: absolute;
     color: #666666;
     font-size: 40px;
-    opacity: 0.7
+    opacity: 0.7;
     font-weight: bold;
     z-index: 9999;
 }
