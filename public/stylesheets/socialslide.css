@@ -12,7 +12,8 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 }
 
 .slide h3 {
-    font-size: 3.5em;    
+    font-size: 3.5em;   
+    color: #666;
 }
 
 .slide h3.center {
