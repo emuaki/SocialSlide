@@ -12,11 +12,15 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 }
 
 .slide h3 {
-    font-size: 3em;    
+    font-size: 3.5em;    
 }
 
 .slide h3.center {
     text-align: center;    
+}
+
+.slide li {
+    padding: .5em 0;    
 }
 
 .likePanel {
