@@ -28,6 +28,7 @@
 		<h2>リアルタイム</h2>
         <ul>
             <li><h3 class="slide">基本、ポーリング</h3></li>
+            <li><h3 class="slide">Pushもあるが</h3></li>
             <li><h3 class="slide">性能上の欠陥あり</h3></li>
         </ul>
 	</section>
@@ -40,9 +41,10 @@
 
     <section class="slide">
     	<h2>C10K Problem</h2>
+        リクエストごとにスレッドを割り当てると...
         <ul>
-            <li></li>
-            <li></li>
+            <li>1スレッドあたりの必要スタックサイズは2MB</li>
+            <li>カーネルのコンテキストスイッチは重い</li>
             <li></li>
         </ul>
 	</section>
@@ -168,13 +170,13 @@
     <section class="slide">
         <h2>heroku</h2>
         <ul>
-            <li><h3>スピーディなスケール</h3></li>
+            <li><h3>スピーディにスケール</h3></li>
             <li><h3>瞬時にデプロイ</h3></li>
         </ul>
     </section>
 
     <section class="slide">
-        <h2>スピーディなスケール</h2>
+        <h2>スピーディにスケール</h2>
         図
     </section>
 
