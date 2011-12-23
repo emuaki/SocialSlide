@@ -9,7 +9,8 @@ LikeSession.prototype = {
         this.id = this.socket.id;
         this.setupListener();
         this.likeService = require('services/like_service').getService();
-        this.sendCurrentCount();
+        var count = this.likeService.getCount();
+        this.socket.emit('likeSession-likeCountUp', {initial: true, count : count});
     },
     
     setupListener : function(){
@@ -24,7 +25,7 @@ LikeSession.prototype = {
         var count = this.likeService.getCount();
         console.log("likeSession-like. count:" + count);
         this.socket.emit('likeSession-likeCountUp', {count : count});
-        this.socket.broadcast.emit('likeSession-likeCountUp', {count : count});
+        this.socket.broadcast.volatile.emit('likeSession-likeCountUp', {count : count});
     }
     
 };

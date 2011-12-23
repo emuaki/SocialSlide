@@ -47,9 +47,9 @@ var LikePanel = function(args){
 };
 
 LikePanel.prototype = {
-
-    initialReceive : false,
     
+    likeButtonDisable : false,
+
     initialize : function(args){
         this.socket = args.socket;
         this.likeButton = $(args.selector.button);
@@ -70,19 +70,23 @@ LikePanel.prototype = {
     },
     
     clickLikeButton : function(){
+        if(this.likeButtonDisable) return;
+        this.likeButtonDisable = true;
+        
         var self = this;
         this.likeButton.css({ "opacity": "0.5"});
         setTimeout(function(){
            self.likeButton.css({"opacity": "1.0"}); 
-        }, 5000);
+        }, 10000);
         this.socket.emit("likeSession-like", {});
     },
     
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
-        if(! this.initialReceive) return;
+        if(data.initial) return;
         this.likeButton.css({"opacity": "1.0"});
         new LikeSplash().show();
+        this.likeButtonDisable = false;
     }
 
 };
