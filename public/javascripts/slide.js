@@ -14,7 +14,17 @@ SlideControl.prototype = {
     },
     
     setupDeck : function(){
-        $.deck('.slide');
+        
+        
+        $.deck('.slide', {
+            keys: {
+                // page down, right arrow, down arrow
+                next: [34, 39, 40],
+                // page up, left arrow, up arrow
+                previous: [33, 37, 38]
+            }
+        });
+        
         if(! this.admin){
             $.deck('extend', 'next', function(){});
             $.deck('extend', 'prev', function(){});
