@@ -1,23 +1,39 @@
+var util = util || {};
+util.extend = function(destination, source, override) {
+    
+    function copy(dest, origin){
+        for (var property in origin) {
+            dest.prototype[property] = origin[property];
+        }
+    }
+    copy(destination, source.prototype);
+    copy(destination, override);
+  
+    return destination;
+};
+
 var LikeSplash  = function(){
     this.initialize();
 };
 
 LikeSplash.prototype = {
     
+    classValue : "likeSplash",
+    
     initialize : function(){
-        this.element = $('<div class="likeSplash">いいね!</div>');
+        this.element = $('<div class="' + this.classValue + '">いいね!</div>');
         $(document.body).append(this.element);
     }, 
     
     move : function(){
-        var point = this.calcRandomPoint();
+        var point = this.calcShowPoint();
         this.element.css({
             left : point.x,
             top : point.y
         });
     },
     
-    calcRandomPoint : function(){
+    calcShowPoint : function(){
         var windowWidth = $(window).width();
         var windowHeight = $(window).height();
         var x = Math.floor(Math.random() * windowWidth) - 100;
@@ -41,6 +57,26 @@ LikeSplash.prototype = {
     }
     
 };
+
+var BigLikeSplash  = function(){
+    this.initialize();
+};
+
+util.exnted(BigLikeSplash, LikeSplash, {
+
+    classValue : "bigLikeSplash",
+
+    calcShowPoint : function(){
+        var windowWidth = $(window).width();
+        var windowHeight = $(window).height();
+        
+        var x = windowWidth / 2 + 500;
+        var y = windowHeight / 2 + 200;
+
+        return {x : x, y : y};
+    }
+    
+});
 
 var LikePanel = function(args){
     this.initialize(args);
