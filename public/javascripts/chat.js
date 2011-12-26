@@ -7,6 +7,8 @@ ChatPanel.prototype = {
     sendButtonDisable : false,
     
     maxMessageSize : 5,
+    
+    timer : null,
 
     initialize : function(args){
         this.socket = args.socket;
@@ -37,9 +39,10 @@ ChatPanel.prototype = {
             message : this.messageField.val()
         });  
         
+        this.messageField.val("");
         var self = this;
         this.sendButton.css({ "opacity": "0.5"});
-        setTimeout(function(){
+        self.timer = setTimeout(function(){
             self.sendButtonDisable = false;
             self.sendButton.css({"opacity": "1.0"}); 
         }, 10000);        
@@ -52,6 +55,7 @@ ChatPanel.prototype = {
         for(var i in messages){
             this.addMessage(messages[i]);
         }
+        if(this.timer !== null) clearTimeout(this.timer);
         this.sendButton.css({ "opacity": "1.0"});
         this.sendButtonDisable = false;
     },

@@ -49,6 +49,8 @@ var LikePanel = function(args){
 LikePanel.prototype = {
     
     likeButtonDisable : false,
+    
+    timer : null,
 
     initialize : function(args){
         this.socket = args.socket;
@@ -75,8 +77,9 @@ LikePanel.prototype = {
         
         var self = this;
         this.likeButton.css({ "opacity": "0.5"});
-        setTimeout(function(){
-           self.likeButton.css({"opacity": "1.0"}); 
+        this.timer = setTimeout(function(){
+            self.likeButtonDisable = false;
+            self.likeButton.css({"opacity": "1.0"}); 
         }, 10000);
         this.socket.emit("likeSession-like", {});
     },
@@ -84,6 +87,7 @@ LikePanel.prototype = {
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
         if(data.initial) return;
+        if(this.timer !== null) clearTimeout(this.timer);
         this.likeButton.css({"opacity": "1.0"});
         new LikeSplash().show();
         this.likeButtonDisable = false;
