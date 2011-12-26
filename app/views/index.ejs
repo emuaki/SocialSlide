@@ -117,15 +117,28 @@
     <section class="slide">
         <h2>スレッドモデル (Tomcat, Apache)</h2>
         <ul>
-            図
+            <li><h4>1接続に対して1スレッドが処理</h4></li>
+            <li><h4>ブロッキングしてもよいがスレッドが足りなくなる</h4></li>
+            <li><h4>コードの見通しが良い</h4></li>
 		</ul>
 	</section>
 
     <section class="slide">
         <h2>イベントループモデル(Node.js, nginx)</h2>
         <ul>
-            図
+            <li><h4>複数接続を1スレッドが処理</h4></li>
+            <li><h4>ブロッキングすると全体が止まる</h4></li>
+            <li><h4>コードの見通しが悪い</h4></li>
     	</ul>
+	</section>
+
+    <section class="slide">
+        <h2>Node.js</h2>
+        <ul>
+            <li><h4>リソース使用率はイベントループが優秀</h4></li>
+            <li><h4>非同期IOを強制してブロッキングを排除</h4></li>
+            <li><h4>JavaScriptはもともと全てが非同期</h4></li>
+        </ul>
 	</section>
 
     <section class="slide">
