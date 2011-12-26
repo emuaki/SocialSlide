@@ -1,3 +1,5 @@
+var sanitize = require('validator').sanitize;
+
 var ChatSession = function(args){
     this.initialize(args);
 };
@@ -38,6 +40,7 @@ ChatSession.prototype = {
     
     convert : function(data){
         console.log(data);
+        data.message = sanitize(data.message).xss();
         return require('services/chat_service').createChatMessage(data);
     }
 };

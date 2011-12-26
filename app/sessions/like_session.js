@@ -23,9 +23,15 @@ LikeSession.prototype = {
     
     sendCurrentCount : function(){
         var count = this.likeService.getCount();
-        console.log("likeSession-like. count:" + count);
-        this.socket.emit('likeSession-likeCountUp', {count : count});
-        this.socket.broadcast.volatile.emit('likeSession-likeCountUp', {count : count});
+        var message = {
+            count : count
+        };
+        if( count % 100 === 0){
+            message.kiriban = true;   
+        }
+        console.log("likeSession-like. count:" + message);
+        this.socket.emit('likeSession-likeCountUp', message);
+        this.socket.broadcast.volatile.emit('likeSession-likeCountUp', message);
     }
     
 };

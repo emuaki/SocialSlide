@@ -65,13 +65,12 @@ LikeSplash.prototype = {
     
 };
 
-var BigLikeSplash  = function(){
+var BigLikeSplash  = function(count){
+    this.likeString = count + "<br />いいね!";
     this.initialize();
 };
 
 util.extend(BigLikeSplash, LikeSplash, {
-    
-    likeString : "１００<br />いいね!",
 
     classValue : "big likeSplash",
     
@@ -139,8 +138,8 @@ LikePanel.prototype = {
         if(data.initial) return;
         if(this.timer !== null) clearTimeout(this.timer);
         this.likeButton.css({"opacity": "1.0"});
-        if(this.judgeKiriban(data.count)){
-            new BigLikeSplash().show();
+        if(data.kiriban){
+            new BigLikeSplash(data.count).show();
         }else{
             new LikeSplash().show();
         }
