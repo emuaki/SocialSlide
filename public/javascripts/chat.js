@@ -40,7 +40,7 @@ ChatPanel.prototype = {
         var self = this;
         this.sendButton.css({ "opacity": "0.5"});
         setTimeout(function(){
-            self.sendButtonDisabled = false;
+            self.sendButtonDisable = false;
             self.sendButton.css({"opacity": "1.0"}); 
         }, 10000);        
     },
@@ -53,7 +53,7 @@ ChatPanel.prototype = {
             this.addMessage(messages[i]);
         }
         this.sendButton.css({ "opacity": "1.0"});
-        this.sendButtonDisabled = false;
+        this.sendButtonDisable = false;
     },
     
     addMessage : function(chatMessage){
