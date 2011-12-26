@@ -1,3 +1,5 @@
+var DateUtil = require('date').DateUtil;
+
 var ChatMessage = function(args){
     this.initialize(args);    
 };
@@ -13,7 +15,7 @@ ChatMessage.prototype = {
     message : "",
     
     initialize : function(args){
-        this.timestamp = new Date();
+        this.timestamp = DateUtil.currentDateAsString();
         this.name = args.name || "nanashi";
         this.message = args.message;
     },
