@@ -29,6 +29,11 @@ app.get('/', function(req, res){
     if(req.query.admin == "true"){
         admin = true;
     }
+    
+    if(req.query.initPageNo == "true"){
+        require('services/slide_service').getService().change(0);
+    }
+
     res.render('index.ejs', {
         hostname : hostname,
         admin : admin

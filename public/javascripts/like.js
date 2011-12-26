@@ -18,10 +18,17 @@ var LikeSplash  = function(){
 
 LikeSplash.prototype = {
     
+    likeString : "いいね!",
+    
     classValue : "likeSplash",
     
+    animeOption : {
+        fontSize : "100px",
+        duration : 1000
+    },
+    
     initialize : function(){
-        this.element = $('<div class="' + this.classValue + '">いいね!</div>');
+        this.element = $('<div class="' + this.classValue + '">' + this.likeString + '</div>');
         $(document.body).append(this.element);
     }, 
     
@@ -48,9 +55,9 @@ LikeSplash.prototype = {
         this.move();
         this.element.fadeIn();
         this.element.animate({
-            fontSize: "100px",
+            fontSize: self.animeOption.fontSize,
             opacity: 0.1
-        }, 1000, function(){
+        }, self.animeOption.duration, function(){
             self.element.fadeOut(1000);
             self.element.remove();
         });
@@ -62,16 +69,23 @@ var BigLikeSplash  = function(){
     this.initialize();
 };
 
-util.exnted(BigLikeSplash, LikeSplash, {
+util.extend(BigLikeSplash, LikeSplash, {
+    
+    likeString : "１００<br />いいね!",
 
-    classValue : "bigLikeSplash",
+    classValue : "big likeSplash",
+    
+    animeOption : {
+        fontSize : "200px",
+        duration : 2000
+    },
 
     calcShowPoint : function(){
         var windowWidth = $(window).width();
         var windowHeight = $(window).height();
         
-        var x = windowWidth / 2 + 500;
-        var y = windowHeight / 2 + 200;
+        var x = windowWidth / 2 - 300;
+        var y = windowHeight / 2 - 300;
 
         return {x : x, y : y};
     }
@@ -87,6 +101,8 @@ LikePanel.prototype = {
     likeButtonDisable : false,
     
     timer : null,
+    
+    kiriban : {},
 
     initialize : function(args){
         this.socket = args.socket;
@@ -127,6 +143,12 @@ LikePanel.prototype = {
         this.likeButton.css({"opacity": "1.0"});
         new LikeSplash().show();
         this.likeButtonDisable = false;
+    },
+    
+    judgeKiriban : function(count){
+        if(count / 100 % 1 == 0){
+            
+        }
     }
 
 };
