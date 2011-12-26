@@ -95,6 +95,10 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
     border-top: 1px dotted #999999;
 }
 
+.chatMessageLine .chatMessage {
+    margin-left: 20px;    
+}
+
 .connectionStatusArea {
     position: fixed;
     bottom : 10px;
