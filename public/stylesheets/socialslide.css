@@ -75,6 +75,15 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
     list-style-type: none;
 }
 
+
+.chatPanelName { 
+    border: 1px solid #999999;    
+}
+
+.chatPanelMessage {
+    border: 1px solid #999999;
+}
+
 .chatMessageTimestamp {
     color : #666666;
     font-size: small;

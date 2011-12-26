@@ -4,6 +4,8 @@ var ChatPanel = function(args){
 
 ChatPanel.prototype = {
     
+    sendButtonDisable : false,
+    
     maxMessageSize : 5,
 
     initialize : function(args){
@@ -18,15 +20,29 @@ ChatPanel.prototype = {
     setupListener : function(){
         var self = this;
         this.sendButton.click(function(){
-            self.socket.emit("ChatSession-newMessage", {
-                name : self.nameField.val(),
-                message : self.messageField.val()
-            });
+            self.clickSendButton();
            return false;
         });
         this.socket.on("ChatSession-newMessage", function(data){
             self.onReceive(data);
         });
+    },
+    
+    clickSendButton : function(){
+        if(this.sendButtonDisable) return;
+        this.sendButtonDisable = true;
+        
+        this.socket.emit("ChatSession-newMessage", {
+            name : this.nameField.val(),
+            message : this.messageField.val()
+        });  
+        
+        var self = this;
+        this.sendButton.css({ "opacity": "0.5"});
+        setTimeout(function(){
+            self.sendButtonDisabled = false;
+            self.sendButton.css({"opacity": "1.0"}); 
+        }, 10000);        
     },
     
     onReceive : function(data){
@@ -35,7 +51,9 @@ ChatPanel.prototype = {
         if(messages === undefined) return;
         for(var i in messages){
             this.addMessage(messages[i]);
-        } 
+        }
+        this.sendButton.css({ "opacity": "1.0"});
+        this.sendButtonDisabled = false;
     },
     
     addMessage : function(chatMessage){
