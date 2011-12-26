@@ -83,9 +83,10 @@ ChatPanel.prototype = {
     },
     
     adjust : function(){
-        var listSize = this.container.find("*").size();
+        var listSize = this.container.find("li").size();
+        console.log(listSize);
         if(listSize > this.maxMessageSize){
-            this.container.find(":last").remove();   
+            this.container.find("li:last").remove();   
         }
     }
 
