@@ -102,8 +102,6 @@ LikePanel.prototype = {
     
     timer : null,
     
-    kiriban : {},
-
     initialize : function(args){
         this.socket = args.socket;
         this.likeButton = $(args.selector.button);
@@ -141,14 +139,12 @@ LikePanel.prototype = {
         if(data.initial) return;
         if(this.timer !== null) clearTimeout(this.timer);
         this.likeButton.css({"opacity": "1.0"});
-        new LikeSplash().show();
-        this.likeButtonDisable = false;
-    },
-    
-    judgeKiriban : function(count){
-        if(count / 100 % 1 == 0){
-            
+        if(this.judgeKiriban(data.count)){
+            new BigLikeSplash().show();
+        }else{
+            new LikeSplash().show();
         }
+        this.likeButtonDisable = false;
     }
 
 };
