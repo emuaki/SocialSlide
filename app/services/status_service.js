@@ -16,7 +16,7 @@ StatusService.prototype = {
     },
     
     minusConnectionCount : function(){
-        this.connectionCount++;
+        this.connectionCount--;
     }
     
 };
