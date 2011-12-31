@@ -18,6 +18,7 @@ SlideSession.prototype = {
     setupListener : function(){
         var self = this;
         this.socket.on('SlideSession-pageChange', function(data){
+            if(data == null || data.page == null) return;
             console.log("slide page change. page:" + data.page);
             self.service.change(data.page);
             self.socket.broadcast.emit(self.pageChangeKey, data);
