@@ -24,20 +24,33 @@ app.configure('production', function(){
   hostname = "http://socialslide.herokuapp.com/";
 });
 
-app.get('/', function(req, res){
+function login(admin, pageNo, password){
+    if(password != "simplex") return false;
+    if(admin != "true") return false;
+    if(isNaN(pageNo)) return false;
+    return true;
+}
+
+function doShow(req, res){
     var admin = false;
-    if(req.query.admin == "true"){
-        admin = true;
-    }
     
-    if(req.query.initPageNo == "true"){
-        require('services/slide_service').getService().change(0);
+    var q = req.query;
+    if(login(q.admin, q.pageNo, q.password)){
+        admin = true;
+        require('services/slide_service').getService().change(q.pageNo);
     }
 
     res.render('index.ejs', {
         hostname : hostname,
         admin : admin
-    });
+    });    
+}
+
+app.get('/', function(req, res){ doShow(req, res); });
+app.post('/', function(req, res){ doShow(req, res); });
+
+app.get('/login', function(req, res){
+    res.render('login.ejs'); 
 });
 
 var sessionManager = require('session_manager').create({io:io});
