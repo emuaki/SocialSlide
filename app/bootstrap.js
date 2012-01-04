@@ -24,6 +24,17 @@ app.configure('production', function(){
   hostname = "http://socialslide.herokuapp.com/";
 });
 
+io.configure('production', function(){
+    io.enable('browser client minification');
+    io.enable('browser client gzip');
+    io.set('transports', [
+        'htmlfile',
+        'xhr-polling',
+        'jsonp-polling'
+    ]);
+    io.set( "log level", 1 );
+});
+
 function login(admin, pageNo, password){
     if(password != "simplex") return false;
     if(admin != "true") return false;
