@@ -38,7 +38,7 @@ function doShow(req, res, isPost){
     if(login(data.admin, data.pageNo, data.password)){
         console.log("admin login. page:" + data.pageNo);
         admin = true;
-        require('services/slide_service').getService().change(data.pageNo);
+        require('services/slide_service').getService().change(data.pageNo - 0 );
     }
 
     res.render('index.ejs', {
