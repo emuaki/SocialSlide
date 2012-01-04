@@ -31,13 +31,14 @@ function login(admin, pageNo, password){
     return true;
 }
 
-function doShow(req, res){
+function doShow(req, res, isPost){
     var admin = false;
     
-    var q = req.query;
-    if(login(q.admin, q.pageNo, q.password)){
+    var data = isPost ? req.body : req.query;
+    if(login(data.admin, data.pageNo, data.password)){
+        console.log("admin login. page:" + data.pageNo);
         admin = true;
-        require('services/slide_service').getService().change(q.pageNo);
+        require('services/slide_service').getService().change(data.pageNo);
     }
 
     res.render('index.ejs', {
@@ -46,8 +47,8 @@ function doShow(req, res){
     });    
 }
 
-app.get('/', function(req, res){ doShow(req, res); });
-app.post('/', function(req, res){ doShow(req, res); });
+app.get('/', function(req, res){ doShow(req, res, false); });
+app.post('/', function(req, res){ doShow(req, res, true); });
 
 app.get('/login', function(req, res){
     res.render('login.ejs'); 
