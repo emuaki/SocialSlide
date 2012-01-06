@@ -40,6 +40,9 @@ ChatSession.prototype = {
     
     convert : function(data){
         if(data == null || data.message == null) return; 
+        if(data.name){
+            data.name = sanitize(data.name).xss();   
+        }
         data.message = sanitize(data.message).xss();
         return require('services/chat_service').createChatMessage(data);
     }
