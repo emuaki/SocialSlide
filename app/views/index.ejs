@@ -305,7 +305,7 @@
 	</section>
 
     <section class="slide">
-        <h2>現状の問題</h2>
+        <h2>現状のWebシステムの問題</h2>
         <ul>
             <li><h4>非リアルタイム</h4></li>
             <li><h4>負荷が高い</h4></li>
@@ -379,19 +379,7 @@
     </div>
 	<div class="likeCounter" id="likeCounter">--</div>
 </div>
-<br style="clear:both" />
-<div class="chatPanel">
-    <span>
-        name: <input type="text" class="chatPanelName" id="chatPanelName" size="16" />
-    </span>
-    <span style="margin-left: 10px">
-        message: <input type="text" class="chatPanelMessage" id="chatPanelMessage" size="64" maxlength="64" />
-    </span>
-    <input type="button" value="send" id="chatPanelSendButton" />
-    <div>
-        <ul id="chatPanelContainer" class="chatPanelContainer"></ul>
-    </div>
-</div>
+
 
 <div class="connectionStatusArea">
     接続ステータス:<span id="connectionStatus">--</span>, 
@@ -421,16 +409,6 @@ $(function() {
         selector : {
             button : "#likeButton",
             counter : "#likeCounter"
-        }
-    });
-
-    new ChatPanel({
-        socket : socket,
-        selector : {
-            button : "#chatPanelSendButton",
-            name : "#chatPanelName",
-            message : "#chatPanelMessage",
-            container : "#chatPanelContainer"
         }
     });
 
