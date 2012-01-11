@@ -29,11 +29,11 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 }
 
 .likePanel {
-    padding-top: 20px;
+    padding-top: 50px;
     width: auto;
     margin: auto;
     max-width: 846px;
-    font-size: 70px;
+    font-size: 100px;
 }
 
 .likeButtonContainer{
