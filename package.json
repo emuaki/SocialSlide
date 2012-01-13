@@ -1,6 +1,6 @@
 {
   "name": "SocialSlide",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "express": "2.5.2",
     "ejs": "0.4.3",
