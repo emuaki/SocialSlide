@@ -4,7 +4,6 @@ var port = process.env.PORT || process.env.C9_PORT;
 app.listen(port);
 console.log("Express server listening on port %d", app.address().port);
 
-// Configuration
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
