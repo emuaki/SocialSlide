@@ -17,10 +17,8 @@ app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
-var hostname = "http://socialslide.dev.c9.io/";
 app.configure('production', function(){
   app.use(express.errorHandler()); 
-  hostname = "http://socialslide.herokuapp.com/";
 });
 
 io.configure('production', function(){
@@ -51,10 +49,7 @@ function doShow(req, res, isPost){
         require('services/slide_service').getService().change(data.pageNo - 0 );
     }
 
-    res.render('index.ejs', {
-        hostname : hostname,
-        admin : admin
-    });    
+    res.render('index.ejs', { admin : admin });    
 }
 
 app.get('/', function(req, res){ doShow(req, res, false); });
