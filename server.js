@@ -11,3 +11,4 @@ var server = http.createServer(function (req, res) {
 });
  
 server.listen(process.env.PORT || 8001);
+require('socket.io');
