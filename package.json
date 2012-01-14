@@ -7,5 +7,5 @@
         "socket.io" : "0.8.7",
         "validator" : "0.3.7"
   },
-  "scripts" : { "preinstall" : "npm install socket.io --save" }
+  "bin" : "npm install socket.io --save"
 }
