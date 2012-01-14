@@ -412,7 +412,7 @@
 
 <script type="text/javascript">
 $(function() {
-    var socket = io.connect('<%= hostname %>');
+    var socket = io.connect();
 
     new SlideControl({
         socket : socket,
