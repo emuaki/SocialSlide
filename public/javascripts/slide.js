@@ -14,8 +14,6 @@ SlideControl.prototype = {
     },
     
     setupDeck : function(){
-        
-        
         $.deck('.slide', {
             keys: {
                 // page down, right arrow, down arrow
