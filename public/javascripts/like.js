@@ -53,12 +53,14 @@ LikeSplash.prototype = {
     show : function(){
         var self = this;
         this.move();
-        this.element.fadeIn();
         this.element.animate({
-            fontSize: self.animeOption.fontSize,
+            scale: 2,
             opacity: 0.1
-        }, self.animeOption.duration, function(){
-            self.element.fadeOut(1000);
+        }, 
+        self.animeOption.duration,
+        'ease-out',
+         function(){
+            self.element.fadeOut(500);
             self.element.remove();
         });
     }
