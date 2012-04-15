@@ -27,18 +27,23 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 .slide li {
     padding: .5em 0;    
 }
+.url {
+    margin-top: 30px;
+    width: 300px;
+    margin: auto;
+    font-size: 35px;
+}
 
 .likePanel {
     padding-top: 50px;
     width: auto;
     margin: auto;
-    max-width: 846px;
-    font-size: 100px;
+    max-width: 400px;
+    font-size: 200px;
 }
 
 .likeButtonContainer{
     text-align: center;
-    float: left;
     width: 400px;
 }
 
@@ -48,7 +53,6 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 
 .likeCounter{
     text-align: center;
-    float: left;
     width: 400px;
     font-weight: bold;
 }
