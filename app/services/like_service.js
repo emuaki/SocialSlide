@@ -37,8 +37,12 @@ LikeService.prototype = {
     
     getCount : function(){
         return this.counter.getCount();   
+    },
+
+    clear : function(){
+        this.counter.clear();
     }
-    
+
 };
 
 var likeService = new LikeService();

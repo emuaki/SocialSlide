@@ -32,10 +32,10 @@ io.configure('production', function(){
     io.set( "log level", 1 );
 });
 
-function login(admin, pageNo, password){
-    if(password != "simplex") return false;
+function login(admin, likeNo, password){
+    if(password != "sugiura0172") return false;
     if(admin != "true") return false;
-    if(isNaN(pageNo)) return false;
+    if(isNaN(likeNo)) return false;
     return true;
 }
 
@@ -43,10 +43,10 @@ function doShow(req, res, isPost){
     var admin = false;
     
     var data = isPost ? req.body : req.query;
-    if(login(data.admin, data.pageNo, data.password)){
-        console.log("admin login. page:" + data.pageNo);
+    if(login(data.admin, data.count, data.password)){
+        console.log("clear counter:" + data.count);
+        require('services/like_service').getService().clear();
         admin = true;
-        require('services/slide_service').getService().change(data.pageNo - 0 );
     }
 
     res.render('index.ejs', { admin : admin });    
@@ -57,10 +57,6 @@ app.post('/', function(req, res){ doShow(req, res, true); });
 
 app.get('/login', function(req, res){
     res.render('login.ejs'); 
-});
-
-app.get('/lt', function(req, res){
-    res.render('lt.ejs'); 
 });
 
 var sessionManager = require('session_manager').create({io:io});
