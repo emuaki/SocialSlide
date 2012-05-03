@@ -42,9 +42,9 @@ LikeSplash.prototype = {
     
     calcShowPoint : function(){
         var windowWidth = $(window).width();
-        var windowHeight = $(window).height()-100;
+        var windowHeight = $(window).height();
         var x = Math.floor(Math.random() * windowWidth) - 100;
-        var y = Math.floor(Math.random() * windowHeight) -100;
+        var y = Math.floor(Math.random() * windowHeight) - 200;
         if(x < 0) x = 0;
         if(y < 0) y = 0;
         return {x : x, y : y};
