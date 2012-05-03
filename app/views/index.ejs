@@ -18,6 +18,7 @@
       margin: auto;
       max-width: 320px;
       font-size: 100px;
+      padding-left:40px;
   }
   
   .likeCounter{
@@ -40,50 +41,13 @@
   }
 
   .stampImage {
-      background: url(../images/stamp01.png);
-      transform: scale3d(0.5,0.5,0.5);
-      -moz-transform:scale3d(0.5,0.5,0.5);
-      -webkit-transform:scale3d(0.5,0.5,0.5);
-      width: 160px;
-      height: 160px;
-      margin-left:-60px;
       float: left;
+      margin-right: 5px;
   }
 
-  #stamp01 {
-      background-position: 0px 0px;
-  }
-
-  #stamp02 {
-      background-position: -160px 0px;
-  }
-
-  #stamp03 {
-      background-position: -320px 0px;
-  }
-
-  #stamp04 {
-      background-position: 0px -170px;
-  }
-
-  #stamp05 {
-      background-position: -160px -170px;
-  }
-
-  #stamp06 {
-      background-position: -320px -170px;
-  }
-
-  #stamp07 {
-      background-position: 0px -340px;
-  }
-
-  #stamp08 {
-      background-position: -160px -340px;
-  }
-
-  #stamp09 {
-      background-position: -320px -340px;
+  .stampImage img {
+      width: 100px;
+      height: 100px;
   }
 
   </style>
@@ -120,29 +84,29 @@
 <body>
   <div class="likePanel">
       <div class="likeCounter" id="likeCounter">--</div>
-  </div>
+  </div>  
   <div id="stamp-carousel">
     <ul>
       <li>
-        <div style="margin:auto; width: 320px;">
-          <div id="stamp01" class="stampImage">01</div>
-          <div id="stamp02" class="stampImage">02</div>
-          <div id="stamp03" class="stampImage">03</div>
+        <div>
+          <div id="stamp01" class="stampImage"><img src="/images/stamp_01.png" /></div>
+          <div id="stamp02" class="stampImage"><img src="/images/stamp_02.png" /></div>
+          <div id="stamp03" class="stampImage"><img src="/images/stamp_03.png" /></div>
         </div>
       </li>
       <li>
-        <div id="stamp04" class="stampImage">04</div>
-        <div id="stamp05" class="stampImage">05</div>
-        <div id="stamp06" class="stampImage">06</div>
+        <div id="stamp04" class="stampImage"><img src="/images/stamp_04.png" /></div>
+        <div id="stamp05" class="stampImage"><img src="/images/stamp_05.png" /></div>
+        <div id="stamp06" class="stampImage"><img src="/images/stamp_06.png" /></div>
       </li>
       <li>
-        <div id="stamp07" class="stampImage">07</div>
-        <div id="stamp08" class="stampImage">08</div>
-        <div id="stamp09" class="stampImage">09</div>
+        <div id="stamp07" class="stampImage"><img src="/images/stamp_07.png" /></div>
+        <div id="stamp08" class="stampImage"><img src="/images/stamp_08.png" /></div>
+        <div id="stamp09" class="stampImage"><img src="/images/stamp_09.png" /></div>
       </li>
     </ul>
   </div>
-  
+</div>  
   <div class="connectionStatusArea">
        接続ステータス:<span id="connectionStatus">--</span>, 
        現在の接続数:<span id="connectionCount">--</span>
