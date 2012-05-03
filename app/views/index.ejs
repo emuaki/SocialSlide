@@ -6,10 +6,13 @@
   <title>Social Slide</title>
   <link rel="stylesheet" href="/stylesheets/swipeslide.css" />
   <style type="text/css">
+  body {
+      background: white url(/images/paper.jpg);
+  }
   .connectionStatusArea {
       position: fixed;
-      bottom : 10px;
-      right: 10px;
+      bottom : 5px;
+      right: 5px;
       color: #666666;
       font-size: 8px;
   }
@@ -38,6 +41,12 @@
   
   .likeSplash.big {
       font-size: 150px;
+  }
+  
+  .stampLine {
+      background-color: white;
+      margin:auto;
+      width:300px;
   }
 
   .stampImage {
@@ -93,24 +102,28 @@
   <div class="likePanel">
       <div class="likeCounter" id="likeCounter">--</div>
   </div>  
-  <div id="stamp-carousel" style="-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);">
+  <div id="stamp-carousel" style="-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); background-color:white;"">
     <ul style="padding-left: 0px;">
       <li>
-        <div style="margin:auto;width:300px;">
+        <div class="stampLine">
           <div id="stamp01" class="stampImage"><img src="/images/stamp_01.png" /></div>
           <div id="stamp02" class="stampImage"><img src="/images/stamp_02.png" /></div>
           <div id="stamp03" class="stampImage"><img src="/images/stamp_03.png" /></div>
         </div>
       </li>
       <li>
-        <div id="stamp04" class="stampImage"><img src="/images/stamp_04.png" /></div>
-        <div id="stamp05" class="stampImage"><img src="/images/stamp_05.png" /></div>
-        <div id="stamp06" class="stampImage"><img src="/images/stamp_06.png" /></div>
+        <div class="stampLine">
+          <div id="stamp04" class="stampImage"><img src="/images/stamp_04.png" /></div>
+          <div id="stamp05" class="stampImage"><img src="/images/stamp_05.png" /></div>
+          <div id="stamp06" class="stampImage"><img src="/images/stamp_06.png" /></div>
+        </div>
       </li>
       <li>
-        <div id="stamp07" class="stampImage"><img src="/images/stamp_07.png" /></div>
-        <div id="stamp08" class="stampImage"><img src="/images/stamp_08.png" /></div>
-        <div id="stamp09" class="stampImage"><img src="/images/stamp_09.png" /></div>
+        <div class="stampLine">
+          <div id="stamp07" class="stampImage"><img src="/images/stamp_07.png" /></div>
+          <div id="stamp08" class="stampImage"><img src="/images/stamp_08.png" /></div>
+          <div id="stamp09" class="stampImage"><img src="/images/stamp_09.png" /></div>
+        </di>
       </li>
     </ul>
   </div>
