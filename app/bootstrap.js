@@ -59,5 +59,9 @@ app.get('/login', function(req, res){
     res.render('login.ejs'); 
 });
 
+app.get('/server', function(req, res){ 
+    res.render('server.ejs');
+});
+
 var sessionManager = require('session_manager').create({io:io});
 sessionManager.start();

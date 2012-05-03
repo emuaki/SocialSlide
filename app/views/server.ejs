@@ -1,0 +1,44 @@
+<div class="likePanel">
+    <div class="likeCounter" id="likeCounter">--</div>
+    <div class="likeButtonContainer">
+        <img id="likeButton" class="likeButton" src="/images/like_button.png" width="320" height="155" />
+    </div>
+</div>
+
+<div class="url">
+  http://goo.gl/EcKAk
+</div>
+<div class="connectionStatusArea">
+     接続ステータス:<span id="connectionStatus">--</span>, 
+     現在の接続数:<span id="connectionCount">--</span>
+</div>
+
+<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
+<script type="text/javascript" src="/javascripts/fx_methods.js"></script>
+<script type="text/javascript" src="/socket.io/socket.io.v0.8.7.js"></script>
+<script type="text/javascript" src="/javascripts/status.js"></script>
+<script type="text/javascript" src="/javascripts/like.js"></script>
+
+<script type="text/javascript">
+$(function() {
+    var socket = io.connect();
+
+    new LikePanel({
+        socket : socket,
+        selector : {
+            button : "#likeButton",
+            counter : "#likeCounter"
+        }
+    });
+
+    new ConnectionStatus({
+        socket : socket,
+        selector : {
+            status : "#connectionStatus",
+            count : "#connectionCount",
+            transport : "#connectionTransport"
+        }
+    });
+
+});
+</script>
