@@ -12,8 +12,8 @@
   }
   .connectionStatusArea {
       position: fixed;
-      bottom : 5px;
-      right: 5px;
+      bottom : 2px;
+      right: 2px;
       color: #666666;
       font-size: 8px;
   }
@@ -68,6 +68,13 @@
   .ui-swipeslide-bullets{
       padding-left: 0px;
   }
+
+  #stamp-carousel {
+     -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+     background-color:white;
+     position: fixed;
+     bottom: 20px;
+  }
   </style>
   <script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
   <script type="text/javascript" src="/javascripts/fx_methods.js"></script>
@@ -103,7 +110,7 @@
   <div class="likePanel">
       <div class="likeCounter" id="likeCounter">--</div>
   </div>  
-  <div id="stamp-carousel" style="-webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4); background-color:white;"">
+  <div id="stamp-carousel">
     <ul style="padding-left: 0px;">
       <li>
         <div class="stampLine">
