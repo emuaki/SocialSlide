@@ -15,17 +15,19 @@ LikeSession.prototype = {
     
     setupListener : function(){
         var self = this;
-        this.socket.on("likeSession-like", function(data){
+        this.socket.on("likeSession-like", function(data, fn){
             console.log("###############" + data.stampId);
             self.likeService.countUp();
-            self.sendCurrentCount();
+            self.sendCurrentCount(data.stampId);
+	    fn();
         });
     },
     
-    sendCurrentCount : function(){
+    sendCurrentCount : function(stampId){
         var count = this.likeService.getCount();
         var message = {
-            count : count
+            count : count,
+	    stampId : stampId
         };
         if( count % 100 === 0){
             message.kiriban = true;   

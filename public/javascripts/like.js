@@ -42,7 +42,7 @@ LikeSplash.prototype = {
     
     calcShowPoint : function(){
         var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
+        var windowHeight = $(window).height()-100;
         var x = Math.floor(Math.random() * windowWidth) - 100;
         var y = Math.floor(Math.random() * windowHeight) -100;
         if(x < 0) x = 0;
@@ -93,9 +93,18 @@ util.extend(BigLikeSplash, LikeSplash, {
     
 });
 
-var LikePanel = function(args){
-    this.initialize(args);
-};
+var StampSplash = function(stampId){
+    this.likeString = '<img src="/images/' + stampId + '.png" />';
+    this.initialize(stampId);
+}
+util.extend(StampSplash, LikeSplash, {
+
+    initialize : function(){
+        this.element = $('<div class="' + this.classValue + '">' + this.likeString + '</div>');
+        $(document.body).append(this.element);
+    }
+    
+});
 
 var Stamp = function(args){
     this.initialize(args);
@@ -125,14 +134,24 @@ Stamp.prototype = {
         
         var self = this;
         this.ele.css({ "opacity": "0.5"});
-        this.timer = setTimeout(function(){
+	var callback = function(){
             self.status = true;
             self.ele.css({"opacity": "1.0"}); 
-        }, 5000);
-        this.socket.emit("likeSession-like", {stampId: this.ele.attr("id")});
+        };
+        this.timer = setTimeout(callback, 5000);
+        this.socket.emit(
+	    "likeSession-like", 
+	    {stampId: this.ele.attr("id")}, 
+	    callback
+	);
     }
 };
 
+
+
+var LikePanel = function(args){
+    this.initialize(args);
+};
 LikePanel.prototype = {
     
     timer : null,
@@ -168,7 +187,7 @@ LikePanel.prototype = {
         if(data.kiriban){
             new BigLikeSplash(data.count).show();
         }else{
-            new LikeSplash().show();
+            new StampSplash(data.stampId).show();
         }
         this.likeButtonDisable = false;
     }
