@@ -57,6 +57,7 @@
   .stampImage{
       width: 95px;
       height: 95px;
+      cursor: pointer;
   }
 
   .stampImage img {
@@ -89,7 +90,7 @@
       new LikePanel({
           socket : socket,
           selector : {
-              button : "#likeButton",
+              button : ".stampImage",
               counter : "#likeCounter"
           }
       });

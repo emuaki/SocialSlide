@@ -97,49 +97,74 @@ var LikePanel = function(args){
     this.initialize(args);
 };
 
+var Stamp = function(args){
+    this.initialize(args);
+};
+
+Stamp.prototype = {
+
+    status : true,
+
+    initialize : function(args){
+	this.socket = args.socket;
+	this.ele = $(args.ele);
+        this.setupListener();
+    },
+
+    setupListener : function(){
+	var self = this;
+        this.ele.click(function(){
+	    self.click();
+            return false;
+	});
+    },
+
+    click : function(){
+        if(! this.status) return;
+        this.status = false;
+        
+        var self = this;
+        this.ele.css({ "opacity": "0.5"});
+        this.timer = setTimeout(function(){
+            self.status = true;
+            self.ele.css({"opacity": "1.0"}); 
+        }, 5000);
+        this.socket.emit("likeSession-like", {stampId: this.ele.attr("id")});
+    }
+};
+
 LikePanel.prototype = {
     
-    likeButtonDisable : false,
-    
     timer : null,
+   
+    stamps : {},
     
     initialize : function(args){
         this.socket = args.socket;
-        this.likeButton = $(args.selector.button);
+        this.stamps = $(args.selector.button);
         this.likeCount = $(args.selector.counter);   
         this.setupListener();
     },
     
     setupListener : function(){
         var self = this;
-        this.likeButton.click(function(){
-            self.clickLikeButton();
-            return false;
+        this.stamps.each(function(i){
+            new Stamp({
+		socket : self.socket,
+		ele : this
+	    });
         });
         this.socket.on("likeSession-likeCountUp", function(data){
             self.onLikeCountUp(data);
             self.initialReceive = true;
         });
     },
-    
-    clickLikeButton : function(){
-        if(this.likeButtonDisable) return;
-        this.likeButtonDisable = true;
-        
-        var self = this;
-        this.likeButton.css({ "opacity": "0.5"});
-        this.timer = setTimeout(function(){
-            self.likeButtonDisable = false;
-            self.likeButton.css({"opacity": "1.0"}); 
-        }, 10000);
-        this.socket.emit("likeSession-like", {});
-    },
-    
+
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
         if(data.initial) return;
         if(this.timer !== null) clearTimeout(this.timer);
-        this.likeButton.css({"opacity": "1.0"});
+
         if(data.kiriban){
             new BigLikeSplash(data.count).show();
         }else{
