@@ -126,6 +126,11 @@ Stamp.prototype = {
 	    self.click();
             return false;
 	});
+        this.ele.tap(function(){
+	    self.click();
+            return false;
+	});
+
     },
 
     click : function(){
@@ -134,15 +139,16 @@ Stamp.prototype = {
         
         var self = this;
         this.ele.css({ "opacity": "0.5"});
-	var callback = function(){
+	var ack = function(){
             self.status = true;
             self.ele.css({"opacity": "1.0"}); 
+            if(self.timer !== null) clearTimeout(self.timer);
         };
-        this.timer = setTimeout(callback, 5000);
+        this.timer = setTimeout(ack, 5000);
         this.socket.emit(
 	    "likeSession-like", 
 	    {stampId: this.ele.attr("id")}, 
-	    callback
+	    ack
 	);
     }
 };
@@ -182,8 +188,6 @@ LikePanel.prototype = {
     onLikeCountUp : function(data){
         this.likeCount.html(data.count);
         if(data.initial) return;
-        if(this.timer !== null) clearTimeout(this.timer);
-
         if(data.kiriban){
             new BigLikeSplash(data.count).show();
         }else{
