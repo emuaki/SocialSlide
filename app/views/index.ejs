@@ -28,13 +28,21 @@
       width: auto;
       margin: auto;
       max-width: 320px;
-      font-size: 100px;
+      font-size: 250px;
   }
-  
+
   .likeCounter{
       text-align: center;
       width: 320px;
       font-weight: bold;
+  }
+
+  .url {
+     width: auto;
+     margin:auto;
+     text-align: center;
+     font-size: 30px;
+     color: #999;
   }
   
   .likeSplash {
@@ -82,6 +90,16 @@
      position: fixed;
      bottom: 20px;
   }
+
+  @media screen and (max-width: 480px) {
+    .likePanel{
+        font-size : 100px;
+    }
+
+    .url {
+        display: none;
+    }
+  }
   </style>
   <script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
   <script type="text/javascript" src="/javascripts/fx_methods.js"></script>
@@ -116,7 +134,10 @@
 <body>
   <div class="likePanel">
       <div class="likeCounter" id="likeCounter">--</div>
-  </div>  
+  </div>
+  <div class="url">
+      http://goo.gl/EcKAk    
+  </div>
   <div id="stamp-carousel">
     <ul style="padding-left: 0px;">
       <li>
