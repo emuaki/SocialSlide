@@ -15,12 +15,13 @@
 .ui-swipeslide-content {
   -webkit-transform: translate3d(0,0,0);
   overflow: hidden;
-  display: -webkit-box;
+/*  display: -webkit-box;
   display: -moz-box;
   display: box;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
   box-orient: horizontal;
+*/
 }
 .ui-swipeslide-vertical .ui-swipeslide-content {
   -webkit-box-orient: vertical;
@@ -28,9 +29,12 @@
   box-orient: vertical;
 }
 .ui-swipeslide-slide {
+  float:left;
+/*
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+*/
 }
 /* 3d */
 .ui-swipeslide-3d {
