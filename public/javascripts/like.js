@@ -54,7 +54,7 @@ LikeSplash.prototype = {
         var self = this;
         this.move();
         this.element.animate({
-            scale: 2,
+            scale3d: '2,2,2',
             opacity: 0.1
         }, 
         self.animeOption.duration,
@@ -68,7 +68,7 @@ LikeSplash.prototype = {
 };
 
 var BigLikeSplash  = function(count){
-    this.likeString = count + "<br />いいね!";
+    this.likeString = count;
     this.initialize();
 };
 
