@@ -26,6 +26,7 @@ io.configure('production', function(){
     io.enable('browser client minification');
     io.enable('browser client gzip');
     io.set('transports', [
+        'websocket',
         'htmlfile',
         'xhr-polling',
         'jsonp-polling'

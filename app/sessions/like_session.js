@@ -16,7 +16,11 @@ LikeSession.prototype = {
     setupListener : function(){
         var self = this;
         this.socket.on("likeSession-like", function(data, ack){
-            console.log("###############" + data.stampId);
+            if(!data){
+                console.log(data);
+                return;
+	    }
+
             self.likeService.countUp();
             self.sendCurrentCount(data.stampId);
 	    ack();
