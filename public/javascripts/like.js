@@ -122,10 +122,6 @@ Stamp.prototype = {
 
     setupListener : function(){
 	var self = this;
-        this.ele.click(function(){
-	    self.click();
-            return false;
-	});
         this.ele.tap(function(){
 	    self.click();
             return false;
