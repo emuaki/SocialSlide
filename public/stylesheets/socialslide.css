@@ -1,7 +1,6 @@
 body, textarea { font-family: "メイリオ", "ＭＳ Ｐゴシック", sans-serif; }
 input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 
-
 .deck-container {
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
@@ -27,6 +26,7 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 .slide li {
     padding: .5em 0;    
 }
+
 .url {
     margin-top: 30px;
     width: 300px;
@@ -81,7 +81,6 @@ input, select { font-family: Arial, "ＭＳ Ｐゴシック", sans-serif; }
 .chatPanelContainer {
     list-style-type: none;
 }
-
 
 .chatPanelName { 
     border: 1px solid #999999;    
