@@ -2,8 +2,8 @@
   "name": "SocialSlide",
   "version": "0.0.3",
   "dependencies":  {
-       "express": "2.5.2",
-       "ejs": "0.4.3",
+       "express": "2.5.9",
+       "ejs": "0.7.1",
        "socket.io" : "0.9.6",
        "validator" : "0.3.7"
   },
