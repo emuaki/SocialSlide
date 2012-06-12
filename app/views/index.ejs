@@ -92,6 +92,21 @@
      bottom: 20px;
   }
 
+  .twitterPanel {
+     width: 500px;
+     font-size: 10px;
+     margin: auto;
+  }
+
+  .twitterPanel li.tweet{
+    clear:both;
+    list-style-type: none;
+  }
+
+  .tweetImage{
+    float:left;
+  }
+
   @media screen and (max-width: 480px) {
     .likePanel{
         max-width: 320px;
@@ -109,6 +124,7 @@
   <script type="text/javascript" src="/socket.io/socket.io.v0.8.7.js"></script>
   <script type="text/javascript" src="/javascripts/status.js"></script>
   <script type="text/javascript" src="/javascripts/like.js"></script>
+  <script type="text/javascript" src="/javascripts/twitter.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
       var socket = io.connect();
@@ -130,6 +146,18 @@
           }
       });
       $('#stamp-carousel').swipeSlide();
+
+      var w = screen.width;
+      var h = screen.height;
+      if (w < 800 || h < 600) {
+          return;
+      }
+      console.log("twitter panel create");      
+      new TwitterPanel({
+          socket : socket,
+          selecter : "#twitterPanel"
+      });
+
   });
   </script>
 </head>
@@ -139,6 +167,8 @@
   </div>
   <div class="url">
 	http://bit.ly/KqKnqy
+  </div>
+  <div id="twitterPanel" class="twitterPanel">
   </div>
   <div id="stamp-carousel">
     <ul style="padding-left: 0px;">

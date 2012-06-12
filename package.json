@@ -5,7 +5,8 @@
        "express": "2.5.9",
        "ejs": "0.7.1",
        "socket.io" : "0.9.6",
-       "validator" : "0.3.7"
+       "validator" : "0.3.7",
+       "ntwitter" : "0.2.10"
   },
 
   "engines": {
