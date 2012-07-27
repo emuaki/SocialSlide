@@ -199,7 +199,7 @@ var StampChanger = function(args){
 };
 StampChanger.prototype = {
 
-    default : "lineCarousel",
+    default : "likeCarousel",
     
     stamps : {},
     
@@ -210,18 +210,14 @@ StampChanger.prototype = {
 	    $(this.stamps[i].stamp).swipeSlide();
 	}
         this.setupListener();
-	
-	var self = this;
-	setTimeout(function(){
-//	    self.initialShow();
-	}, 1000);
+	this.initialShow();
     },
 
     initialShow: function(){
 	for(var i in this.stamps){
-	    $(this.stamps[i].container).hide();
+	    $(this.stamps[i].stamp).css({ bottom: "10000px"});
 	}
-        $(this.stamps[this.default].container).show();
+        $(this.stamps[this.default].stamp).css({bottom: "20px"});
     },
     
     setupListener : function(){
