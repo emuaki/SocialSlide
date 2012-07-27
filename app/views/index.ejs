@@ -85,11 +85,12 @@
       padding-left: 0px;
   }
 
-  #stamp-carousel {
+  .carousel {
      -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
      background-color:white;
      position: absolute; 
      bottom: 20px;
+
   }
 
   @media screen and (max-width: 480px) {
@@ -129,7 +130,14 @@
               transport : "#connectionTransport"
           }
       });
-      $('#stamp-carousel').swipeSlide();
+      
+      new StampChanger({
+          socket : socket,
+          stamps : {
+              "likeCarousel" : {container : "#likeCarouselContainer", stamp: "#likeCarousel"},
+              "lineCarousel" : {container : "#lineCarouselContainer", stamp: "#lineCarousel"}
+          }
+      })
 
   });
   </script>
@@ -142,7 +150,20 @@
 	http://socialslide.herokuapp.com/
   </div>
 
-  <div id="stamp-carousel">
+  <div id="likeCarouselContainer">
+  <div id="likeCarousel" class="carousel">
+    <ul style="padding-left: 0px;">
+      <li style="vertical-align:top">
+        <div class="stampLine">
+          <div id="stamp01" class="stampImage"><img src="/images/likeButton.jpg" style="width:240px: height:100px" /></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  </div>
+  
+  <div id="lineCarouselContainer">
+  <div id="lineCarousel" class="carousel">
     <ul style="padding-left: 0px;">
       <li style="vertical-align:top">
         <div class="stampLine">
@@ -181,7 +202,9 @@
       </li>
     </ul>
   </div>
-</div>  
+  </div>
+
+
   <div class="connectionStatusArea">
        接続ステータス:<span id="connectionStatus">--</span>, 
        現在の接続数:<span id="connectionCount">--</span>

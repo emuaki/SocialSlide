@@ -192,3 +192,50 @@ LikePanel.prototype = {
     }
 
 };
+
+
+var StampChanger = function(args){
+    this.initialize(args);
+};
+StampChanger.prototype = {
+
+    default : "lineCarousel",
+    
+    stamps : {},
+    
+    initialize : function(args){
+        this.socket = args.socket;
+        this.stamps = args.stamps;
+	for(var i in this.stamps){
+	    $(this.stamps[i].stamp).swipeSlide();
+	}
+        this.setupListener();
+	
+	var self = this;
+	setTimeout(function(){
+//	    self.initialShow();
+	}, 1000);
+    },
+
+    initialShow: function(){
+	for(var i in this.stamps){
+	    $(this.stamps[i].container).hide();
+	}
+        $(this.stamps[this.default].container).show();
+    },
+    
+    setupListener : function(){
+        var self = this;
+        this.socket.on("likeSession-stampChange", function(data){
+            self.onChange(data);
+        });
+    },
+
+    onChange : function(data){
+	for(var i in this.stamps){
+	    $(this.stamps[i].stamp).css({ bottom: "10000px"});
+	}
+        $(this.stamps[data].stamp).css({bottom: "20px"});
+    }
+
+};

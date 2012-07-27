@@ -25,6 +25,16 @@ LikeSession.prototype = {
             self.sendCurrentCount(data.stampId);
 	    ack();
         });
+
+        this.socket.on("likeSession-stampChangeFromMaster", function(data){
+            if(!data){
+                console.log(data);
+                return;
+	    }
+	    
+            self.socket.broadcast.emit("likeSession-stampChange", data);
+        });
+
     },
     
     sendCurrentCount : function(stampId){
