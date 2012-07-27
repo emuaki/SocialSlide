@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Social Slide Master</title>
+  <link rel="stylesheet" href="/stylesheets/swipeslide.css" />
+  <style type="text/css">
+  html {
+      widh: 100%;
+      height:100%;
+      background: url(/images/paper.jpg);
+  }
+
+  body {
+      margin: 0 0;
+  }
+
+  .connectionStatusArea {
+      position: absolute;
+      bottom : 2px;
+      right: 2px;
+      color: #666666;
+      font-size: 8px;
+  }
+
+  .container {
+      width: 1000px;
+      margin: auto;
+  }
+
+  .slidePanel {
+      width: 600px;
+      height: 430px;
+      float: left;
+  }
+  
+  .likePanel {
+      padding-top: 80px;
+      padding-left: 20px;
+      width: 340px;
+      font-size: 160px;
+      float: left;
+  }
+
+  .likeCounter{
+      -webkit-transform: scale3d(1,1,1);
+      font-weight: bold;
+  }
+
+  .url {
+      -webkit-transform: scale3d(1,1,1);
+      width: auto;
+      margin-left:auto;
+      margin-right:auto;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 60px;
+      color: #999;
+  }
+  
+  .likeSplash {
+      position: absolute;
+      color: #666666;
+      font-size: 40px;
+      opacity: 0.7;
+      font-weight: bold;
+      z-index: -9999;
+  }
+  
+  .likeSplash.big {
+      font-size: 150px;
+  }
+  
+
+  </style>
+  <script type="text/javascript" src="/javascripts/zepto.min.js"></script>
+  <script type="text/javascript" src="/javascripts/fx_methods.js"></script>
+  <script type="text/javascript" src="/javascripts/swipeslide.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.v0.8.7.js"></script>
+  <script type="text/javascript" src="/javascripts/status.js"></script>
+  <script type="text/javascript" src="/javascripts/like.js"></script>
+  <script type="text/javascript" src="/javascripts/twitter.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+      var socket = io.connect();
+  
+      new LikePanel({
+          socket : socket,
+          selector : {
+              button : ".stampImage",
+              counter : "#likeCounter"
+          }
+      });
+  
+      new ConnectionStatus({
+          socket : socket,
+          selector : {
+              status : "#connectionStatus",
+              count : "#connectionCount",
+              transport : "#connectionTransport"
+          }
+      });
+
+  });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="url">
+      http://socialslide.herokuapp.com/
+    </div>
+
+    <div class="slidePanel">
+      <iframe src="http://www.slideshare.net/slideshow/embed_code/12882711" width="597" height="486" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe> 
+    </div>
+
+    <div class="likePanel">
+      <div class="likeCounter" id="likeCounter">--</div>
+    </div>
+  </div>
+
+  <div class="connectionStatusArea">
+       接続ステータス:<span id="connectionStatus">--</span>, 
+       現在の接続数:<span id="connectionCount">--</span>
+  </div>
+</body>
+</html>

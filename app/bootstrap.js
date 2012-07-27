@@ -34,36 +34,48 @@ io.configure('production', function(){
     io.set( "log level", 1 );
 });
 
-function login(admin, likeNo, password){
-    if(password != "sugiura0172") return false;
-    if(admin != "true") return false;
-    if(isNaN(likeNo)) return false;
-    return true;
-}
 
 function doShow(req, res, isPost){
-    var admin = false;
     
     var data = isPost ? req.body : req.query;
     if(login(data.admin, data.count, data.password)){
-        console.log("clear counter:" + data.count);
-        require('services/like_service').getService().clear();
         admin = true;
     }
-
-    res.render('index.ejs', { admin : admin });    
 }
 
-app.get('/', function(req, res){ doShow(req, res, false); });
+app.get('/', function(req, res){ 
+    res.render('index.ejs');
+});
+
 app.post('/', function(req, res){ doShow(req, res, true); });
 
 app.get('/login', function(req, res){
     res.render('login.ejs'); 
 });
 
-app.get('/server', function(req, res){ 
-    res.render('server.ejs');
+function login(data){
+    if(data.password !== "sugiura0172") return false;
+    return true;
+}
+
+app.all('/master', function(req, res){ 
+    var data = req.body;
+    if(login(data)){
+	res.render('master.ejs');	
+    }
+    res.render('error.ejs');
 });
+
+app.post('/clear', function(req, res){ 
+    var data = req.body;
+    if(login(data)){
+	console.log("clear counter:" + data.count);
+	require('services/like_service').getService().clear();
+	res.render('master.ejs');
+    }
+    res.render('error.ejs');
+});
+
 
 var sessionManager = require('session_manager').create({io:io});
 sessionManager.start();

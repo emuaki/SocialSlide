@@ -46,8 +46,8 @@ SessionManager.prototype = {
         sessionStore.add("LikeSession", require('sessions/like_session').create({socket: socket}));
         sessionStore.add("SlideSession", require('sessions/slide_session').create({socket: socket}));
         sessionStore.add("StatusSession", require('sessions/status_session').create({socket: socket}));
-        sessionStore.add("ChatSession", require('sessions/chat_session').create({socket: socket}));
-        sessionStore.add("TwitterSession", require('sessions/twitter_session').create({socket: socket})); 
+        // sessionStore.add("ChatSession", require('sessions/chat_session').create({socket: socket}));
+        // sessionStore.add("TwitterSession", require('sessions/twitter_session').create({socket: socket})); 
         return sessionStore;
     },
     
