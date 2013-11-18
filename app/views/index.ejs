@@ -21,7 +21,7 @@
       bottom : 2px;
       right: 2px;
       color: #666666;
-      font-size: 10px;
+      font-size: 12px;
   }
   
   .likePanel {
@@ -88,9 +88,9 @@
   .carousel {
      -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
      background-color:white;
-     position: absolute; 
+     position: absolute;
      bottom: 20px;
-
+     opacity: 0.8;
   }
 
   @media screen and (max-width: 480px) {
@@ -107,7 +107,7 @@
   <script type="text/javascript" src="/javascripts/zepto.min.js"></script>
   <script type="text/javascript" src="/javascripts/fx_methods.js"></script>
   <script type="text/javascript" src="/javascripts/swipeslide.js"></script>
-  <script type="text/javascript" src="/socket.io/socket.io.v0.8.7.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="/javascripts/status.js"></script>
   <script type="text/javascript" src="/javascripts/like.js"></script>
   <script type="text/javascript">
@@ -146,10 +146,6 @@
   <div class="likePanel">
       <div class="likeCounter" id="likeCounter">--</div>
   </div>
-  <div class="url">
-	http://p.tl/nSaR
-  </div>
-
   <div id="likeCarousel" class="carousel">
     <ul style="padding-left: 0px;">
       <li style="vertical-align:top">
