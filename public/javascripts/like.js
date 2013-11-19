@@ -134,17 +134,17 @@ Stamp.prototype = {
         
         var self = this;
         this.ele.css({ "opacity": "0.5"});
-	var ack = function(){
+		var ack = function(){
             self.status = true;
             self.ele.css({"opacity": "1.0"}); 
             if(self.timer !== null) clearTimeout(self.timer);
         };
         this.timer = setTimeout(ack, 5000);
         this.socket.emit(
-	    "likeSession-like", 
-	    {stampId: this.ele.attr("id")}, 
-	    ack
-	);
+			"likeSession-like", 
+			{stampId: this.ele.attr("id")}, 
+			ack
+		);
     }
 };
 
